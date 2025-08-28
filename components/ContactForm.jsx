@@ -62,7 +62,7 @@ export function ContactForm() {
                     {...register("name", {
                         required: "Имя обязательно для заполнения",
                     })}
-                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/50 outline-none transition-all backdrop-blur-md"
+                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-sky-400 outline-none transition-all backdrop-blur-md"
                 />
                 {errors.name && (
                     <p className="text-red-400 text-sm mt-2">
@@ -81,7 +81,7 @@ export function ContactForm() {
                             message: "Неверный формат email",
                         },
                     })}
-                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/50 outline-none transition-all backdrop-blur-md"
+                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-sky-400 outline-none transition-all backdrop-blur-md"
                 />
                 {errors.email && (
                     <p className="text-red-400 text-sm mt-2">
@@ -96,7 +96,7 @@ export function ContactForm() {
                     {...register("message", {
                         required: "Сообщение не может быть пустым",
                     })}
-                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/50 outline-none transition-all backdrop-blur-md"
+                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-sky-400 outline-none transition-all backdrop-blur-md"
                 />
                 {errors.message && (
                     <p className="text-red-400 text-sm mt-2">
