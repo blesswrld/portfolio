@@ -1,9 +1,11 @@
 "use client";
-import { useState } from "react"; // Добавляем импорт
+
+import { useState } from "react";
 import { projectsData } from "../data/projectsData";
 import { ProjectCard } from "./ProjectCard";
-import { ProjectModal } from "./ProjectModal"; // Добавляем импорт
-import { motion } from "framer-motion";
+import { ProjectModal } from "./ProjectModal";
+import { SpotlightCard } from "./SpotlightCard"; // <-- ИМПОРТИРУЕМ ОБЕРТКУ
+import { AnimatePresence, motion } from "framer-motion";
 import { Disclosure, DisclosureButton } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
@@ -21,9 +23,6 @@ export const PortfolioTab = () => {
         // Добавляем обработчик
         setSelectedProject(null);
     };
-
-    const visibleProjects = projectsData.slice(0, INITIAL_COUNT);
-    const hiddenProjects = projectsData.slice(INITIAL_COUNT);
 
     return (
         // Используем React Fragment, чтобы добавить модальное окно на том же уровне
@@ -59,12 +58,15 @@ export const PortfolioTab = () => {
                                                         : 0,
                                             }}
                                         >
-                                            <ProjectCard
-                                                project={project}
-                                                onImageClick={() =>
-                                                    handleOpenModal(project)
-                                                }
-                                            />
+                                            {/* --- ОБАРАЧИВАЕМ КАРТОЧКУ В ОБЕРТКУ --- */}
+                                            <SpotlightCard>
+                                                <ProjectCard
+                                                    project={project}
+                                                    onImageClick={() =>
+                                                        handleOpenModal(project)
+                                                    }
+                                                />
+                                            </SpotlightCard>
                                         </motion.div>
                                     ))}
                             </div>
@@ -93,6 +95,15 @@ export const PortfolioTab = () => {
                     )}
                 </Disclosure>
             </motion.div>
+
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectModal
+                        project={selectedProject}
+                        onClose={handleCloseModal}
+                    />
+                )}
+            </AnimatePresence>
 
             {/* Добавляем рендер модального окна */}
             <ProjectModal

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { ResumeTab } from "@/components/ResumeTab";
 import { PortfolioTab } from "@/components/PortfolioTab";
@@ -19,6 +19,7 @@ const tabsConfig = [
 export default function HomePage() {
     // Состояние для отслеживания активной вкладки
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const tabPanelsRef = useRef(null);
 
     // Функция для программного переключения на вкладку "Контакты"
     const switchToContactTab = () => {
@@ -28,6 +29,15 @@ export default function HomePage() {
         if (contactTabIndex !== -1) {
             setSelectedIndex(contactTabIndex);
         }
+    };
+
+    const handleTabChange = (index) => {
+        setSelectedIndex(index);
+        // Плавный скролл при клике на таб
+        tabPanelsRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
     };
 
     const tabs = [
@@ -58,7 +68,7 @@ export default function HomePage() {
                 {/* Управляем TabGroup через состояние */}
                 <TabGroup
                     selectedIndex={selectedIndex}
-                    onChange={setSelectedIndex}
+                    onChange={handleTabChange}
                 >
                     <TabList className="flex flex-wrap md:flex-nowrap justify-center gap-4">
                         {tabs.map(({ name }) => (
@@ -70,7 +80,7 @@ export default function HomePage() {
                             </Tab>
                         ))}
                     </TabList>
-                    <TabPanels className="mt-8">
+                    <TabPanels ref={tabPanelsRef} className="mt-8">
                         <TabTransition selectedIndex={selectedIndex}>
                             {tabs.map(({ name, component }) => (
                                 <TabPanel key={name} unmount={false}>

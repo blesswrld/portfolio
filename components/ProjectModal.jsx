@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import {
     Dialog,
     DialogPanel,
@@ -10,11 +10,33 @@ import {
     TabPanel,
     TabPanels,
 } from "@headlessui/react";
-import { XMarkIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
+import {
+    XMarkIcon,
+    InformationCircleIcon,
+    MagnifyingGlassPlusIcon,
+    MagnifyingGlassMinusIcon,
+} from "@heroicons/react/24/solid";
+import { useState, useEffect } from "react";
+
+// --- КОМПОНЕНТ ДЛЯ ОТОБРАЖЕНИЯ ИЗОБРАЖЕНИЯ С МАСШТАБОМ ---
+const ZoomableImage = ({ src, alt, scale, onDoubleClick }) => {
+    return (
+        <img
+            src={src}
+            alt={alt}
+            className="transition-transform duration-200 ease-out origin-center"
+            style={{
+                transform: `scale(${scale})`,
+                touchAction: "none",
+            }}
+            onDoubleClick={onDoubleClick}
+        />
+    );
+};
 
 // Компонент-предупреждение
 const ScreenshotWarning = () => (
-    <div className="flex items-center gap-2 p-3 text-xs text-amber-300/80 bg-amber-900/20 border border-amber-500/20 rounded-lg my-4">
+    <div className="flex items-center gap-2 p-3 text-xs text-amber-300/80 bg-amber-900/20 border border-amber-500/20 rounded-lg mb-4">
         <InformationCircleIcon className="w-5 h-5 flex-shrink-0" />
         <span>
             Некоторые анимации или интерактивные элементы могут некорректно
@@ -25,7 +47,7 @@ const ScreenshotWarning = () => (
 );
 
 // Компонент для рендеринга контента внутри модалки
-const ModalContent = ({ project }) => {
+const ModalContent = ({ project, scale, onDoubleClick }) => {
     // Если у проекта есть вкладки (tabs) - рендерим их
     if (project.tabs && project.tabs.length > 0) {
         return (
@@ -49,10 +71,11 @@ const ModalContent = ({ project }) => {
                     <TabPanels className="mt-2">
                         {project.tabs.map((tab) => (
                             <TabPanel key={tab.name}>
-                                <img
+                                <ZoomableImage
                                     src={tab.imageUrl}
                                     alt={`Скриншот: ${tab.name}`}
-                                    className="w-full h-auto"
+                                    scale={scale}
+                                    onDoubleClick={onDoubleClick}
                                 />
                             </TabPanel>
                         ))}
@@ -67,10 +90,11 @@ const ModalContent = ({ project }) => {
         return (
             <div>
                 <ScreenshotWarning />
-                <img
+                <ZoomableImage
                     src={project.fullImageUrl}
                     alt={`Полный скриншот проекта ${project.title}`}
-                    className="w-full h-auto"
+                    scale={scale}
+                    onDoubleClick={onDoubleClick}
                 />
             </div>
         );
@@ -86,6 +110,19 @@ const ModalContent = ({ project }) => {
 
 export const ProjectModal = ({ project, onClose }) => {
     const isOpen = Boolean(project);
+    const [scale, setScale] = useState(1);
+
+    // Сбрасываем зум при открытии нового проекта
+    useEffect(() => {
+        if (project) {
+            setScale(1);
+        }
+    }, [project]);
+
+    const handleZoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3));
+    const handleZoomOut = () => setScale((prev) => Math.max(1, prev - 0.2));
+    const handleDoubleClick = () => setScale(1);
+
     if (!project) return null;
 
     return (
@@ -107,7 +144,7 @@ export const ProjectModal = ({ project, onClose }) => {
                     <div className="flex min-h-full items-center justify-center">
                         <TransitionChild
                             as="div"
-                            className="relative" // <-- Добавляем position-relative
+                            className="relative"
                             enter="ease-out duration-300"
                             enterFrom="opacity-0 scale-95"
                             enterTo="opacity-100 scale-100"
@@ -117,15 +154,34 @@ export const ProjectModal = ({ project, onClose }) => {
                         >
                             <button
                                 onClick={onClose}
-                                className="absolute -top-4 -right-4 z-10 p-2 rounded-full text-white/50 bg-black/50 hover:text-white hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors"
+                                className="absolute -top-4 -right-4 z-20 p-2 rounded-full text-white/50 bg-black/50 hover:text-white hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors"
                                 aria-label="Закрыть"
                             >
                                 <XMarkIcon className="w-6 h-6" />
                             </button>
 
-                            <DialogPanel className="w-full max-w-4xl rounded-xl bg-slate-900/80 border border-white/10 p-4 backdrop-blur-xl">
+                            <DialogPanel className="relative w-full max-w-4xl rounded-xl bg-slate-900/80 border border-white/10 p-4 backdrop-blur-xl overflow-hidden">
                                 <div className="max-h-[85vh] overflow-y-auto rounded-lg">
-                                    <ModalContent project={project} />
+                                    <ModalContent
+                                        project={project}
+                                        scale={scale}
+                                        onDoubleClick={handleDoubleClick}
+                                    />
+                                </div>
+
+                                <div className="absolute bottom-7 right-10 z-20 flex items-center gap-2">
+                                    <button
+                                        onClick={handleZoomOut}
+                                        className="p-2 rounded-full bg-black/50 hover:bg-black/80 text-white focus:outline-none"
+                                    >
+                                        <MagnifyingGlassMinusIcon className="w-5 h-5" />
+                                    </button>
+                                    <button
+                                        onClick={handleZoomIn}
+                                        className="p-2 rounded-full bg-black/50 hover:bg-black/80 text-white focus:outline-none"
+                                    >
+                                        <MagnifyingGlassPlusIcon className="w-5 h-5" />
+                                    </button>
                                 </div>
                             </DialogPanel>
                         </TransitionChild>

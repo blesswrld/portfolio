@@ -90,15 +90,14 @@ export default function RootLayout({ children }) {
     return (
         <html lang="ru">
             <body>
+                <div className="aurora-background"></div>
+
                 {children}
-                {/* 
-                  2. Добавляем компонент Toaster.
-                  Он будет "слушать" вызовы toast() и отображать уведомления.
-                */}
+
+                {/* Контейнер для уведомлений (Toaster) */}
                 <Toaster
-                    position="bottom-right" // Позиция на экране
+                    position="bottom-right"
                     toastOptions={{
-                        // Стили для соответствия вашему дизайну
                         style: {
                             background: "#1E293B", // slate-800
                             color: "#E2E8F0", // slate-200
