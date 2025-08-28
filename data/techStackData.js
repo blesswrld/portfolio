@@ -1,0 +1,56 @@
+export const techStackData = [
+    {
+        category: "Frontend (Клиентская часть):",
+        technologies: [
+            { name: "React", color: "bg-sky-500 text-white" },
+            { name: "Next.js", color: "bg-black text-white" },
+            { name: "JavaScript", color: "bg-yellow-400 text-black" },
+            { name: "TypeScript", color: "bg-blue-600 text-white" },
+            { name: "Tailwind CSS", color: "bg-teal-500 text-white" },
+            { name: "DaisyUI", color: "bg-indigo-900 text-white" },
+            { name: "MUI", color: "bg-blue-500 text-white" },
+            { name: "Shadcn/UI", color: "bg-black text-white" },
+            { name: "Geist UI", color: "bg-neutral-800 text-white" },
+            { name: "Sass", color: "bg-pink-500 text-white" },
+            { name: "Bootstrap", color: "bg-purple-600 text-white" },
+            { name: "Zustand", color: "bg-neutral-800 text-white" },
+            { name: "Redux", color: "bg-purple-700 text-white" },
+            { name: "Axios", color: "bg-indigo-600 text-white" },
+            { name: "Socket.io Client", color: "bg-black text-white" },
+            { name: "React Router", color: "bg-red-600 text-white" },
+            { name: "Framer Motion", color: "bg-black text-white" },
+            { name: "GSAP", color: "bg-lime-500 text-black" },
+        ],
+    },
+    {
+        category: "Backend (Серверная часть):",
+        technologies: [
+            { name: "Express.js", color: "bg-neutral-700 text-white" },
+            { name: "Socket.io Server", color: "bg-black text-white" },
+            { name: "MongoDB", color: "bg-green-600 text-white" },
+            { name: "Mongoose", color: "bg-red-800 text-white" },
+            { name: "JWT", color: "bg-black text-white" },
+            { name: "Convex", color: "bg-purple-600 text-white" },
+            { name: "Supabase", color: "bg-green-500 text-white" },
+            { name: "Cookie Parser", color: "bg-neutral-600 text-white" },
+        ],
+    },
+    {
+        category: "Облачные Сервисы и Хранилище:",
+        technologies: [
+            { name: "Yandex Cloud S3", color: "bg-yellow-400 text-black" },
+        ],
+    },
+    {
+        category: "Инструменты Сборки и Утилиты:",
+        technologies: [
+            { name: "Vite", color: "bg-indigo-500 text-white" },
+            { name: "Create React App", color: "bg-cyan-500 text-black" },
+            { name: "Webpack", color: "bg-sky-400 text-white" },
+            { name: "Gulp", color: "bg-red-600 text-white" },
+            { name: "Babel", color: "bg-yellow-400 text-black" },
+            { name: "NPM", color: "bg-red-600 text-white" },
+            { name: "Prettier", color: "bg-yellow-500 text-black" },
+        ],
+    },
+];
