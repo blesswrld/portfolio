@@ -4,17 +4,40 @@ import {
     DisclosureButton,
     DisclosurePanel,
 } from "@headlessui/react";
-import { ChevronDownIcon, CodeBracketIcon } from "@heroicons/react/24/solid"; // Добавляем иконку
+import { ChevronDownIcon, CodeBracketIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { techStackData } from "../data/techStackData";
 
-// Карта цветов для линий, чтобы они соответствовали категориям
+// Карта HEX-цветов для линий
 const categoryLineColors = {
-    "Frontend (Клиентская часть):": "stroke-sky-500",
-    "Backend (Серверная часть):": "stroke-emerald-500",
-    "Облачные Сервисы и Хранилище:": "stroke-amber-500",
-    "Инструменты Сборки и Утилиты:": "stroke-indigo-500",
+    "Frontend (Клиентская часть):": "#0ea5e9", // sky-500
+    "Backend (Серверная часть):": "#10b981", // emerald-500
+    "Облачные Сервисы и Хранилище:": "#f59e0b", // amber-500
+    "Инструменты Сборки и Утилиты:": "#6366f1", // indigo-500
 };
+
+// Компонент бейджа
+const TechBadge = ({ name, bgColor, logoColor, logo }) => (
+    <a
+        href={logo ? `https://simpleicons.org/icons/${logo}` : "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ backgroundColor: bgColor, color: logoColor }}
+        className="flex items-center gap-2 px-2.5 py-1 rounded text-sm font-bold transition-transform hover:scale-105"
+    >
+        {logo && (
+            <img
+                src={`https://cdn.simpleicons.org/${logo}/${logoColor.replace(
+                    "#",
+                    ""
+                )}`}
+                alt={`${name} logo`}
+                className="h-4 w-4"
+            />
+        )}
+        {name}
+    </a>
+);
 
 export const ResumeTab = () => (
     <motion.div
@@ -63,46 +86,34 @@ export const ResumeTab = () => (
             <h2 className="text-3xl font-bold mb-12 text-center text-white">
                 Стек Технологий и Инструменты
             </h2>
-            <div className="space-y-12">
+            <div className="space-y-8">
                 {techStackData.map((group) => (
-                    <div key={group.category} className="tech-group">
-                        {/* SVG Линия и иконка */}
-                        <div className="absolute left-0 top-0 h-full flex flex-col items-center">
+                    <div
+                        key={group.category}
+                        className="tech-group-container"
+                        // Задаем цвет линии через CSS-переменную
+                        style={{
+                            "--line-color": categoryLineColors[group.category],
+                        }}
+                    >
+                        {/* Абсолютно спозиционированная иконка */}
+                        <div className="absolute left-0 top-0">
                             <CodeBracketIcon
-                                className={`h-6 w-6 z-10 ${categoryLineColors[
-                                    group.category
-                                ]?.replace("stroke-", "text-")}`}
+                                className="h-6 w-6"
+                                style={{
+                                    color: categoryLineColors[group.category],
+                                }}
                             />
-                            <svg height="100%" width="2" className="flex-grow">
-                                <motion.line
-                                    x1="1"
-                                    y1="0"
-                                    x2="1"
-                                    y2="100%"
-                                    className={`${
-                                        categoryLineColors[group.category]
-                                    }`}
-                                    strokeWidth="2"
-                                    initial={{ pathLength: 0 }}
-                                    animate={{ pathLength: 1 }}
-                                    transition={{ duration: 0.5, delay: 0.2 }}
-                                />
-                            </svg>
                         </div>
 
-                        <div className="ml-4">
-                            <h3 className="text-xl font-semibold text-white/80 mb-4">
+                        {/* Контент */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-white/80">
                                 {group.category}
                             </h3>
-                            <div className="flex flex-wrap gap-3">
+                            <div className="flex flex-wrap gap-2 mt-4">
                                 {group.technologies.map((tech) => (
-                                    <motion.span
-                                        key={tech.name}
-                                        className={`px-3 py-1.5 text-sm font-bold rounded-md shadow-md ${tech.color} transition-transform hover:scale-105`}
-                                        whileHover={{ y: -2 }}
-                                    >
-                                        {tech.name}
-                                    </motion.span>
+                                    <TechBadge key={tech.name} {...tech} />
                                 ))}
                             </div>
                         </div>

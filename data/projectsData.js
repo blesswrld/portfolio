@@ -5,6 +5,7 @@ export const projectsData = [
         description:
             "Адаптивный лендинг, сверстанный по макету из Figma. Реализована интерактивность с помощью JavaScript, включая модальные окна, формы, слайдер и калькулятор для подбора окон. Стилизация выполнена с использованием CSS.",
         imageUrl: "/images/projects/irvas-project.jpg",
+        fullImageUrl: "/images/projects/full/irvas-project-full.jpg",
         tech: ["HTML", "CSS", "JavaScript"],
         liveUrl: "https://irvas-project.vercel.app",
         repoUrl: "https://github.com/blesswrld/irvas-project",
@@ -15,46 +16,111 @@ export const projectsData = [
         description:
             "Адаптивный многостраничный сайт, сверстанный по макету Figma. Стилизация реализована с использованием Sass. JavaScript применен для создания интерактивных элементов. Интегрирован YouTube API для динамической подгрузки видео.",
         imageUrl: "/images/projects/loan-project.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/loan-project-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/loan-project-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl: "/images/projects/tabs/loan-project-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl: "/images/projects/tabs/loan-project-full-tab-4.jpg",
+            },
+            {
+                name: "5",
+                imageUrl: "/images/projects/tabs/loan-project-full-tab-5.jpg",
+            },
+            {
+                name: "6",
+                imageUrl: "/images/projects/tabs/loan-project-full-tab-6.jpg",
+            },
+        ],
         tech: ["HTML", "Sass", "JavaScript", "API Integration"],
         liveUrl: "https://loan-project-phi.vercel.app",
         repoUrl: "https://github.com/blesswrld/loan-project",
     },
     {
-        id: 4,
+        id: 3,
         title: "Food Project (Лендинг)",
         description:
             "Адаптивный лендинг по макету Figma. С помощью JavaScript реализованы интерактивные элементы: модальные окна и формы. Настроен JSON Server для динамической подгрузки данных и имитации отправки форм.",
+
         imageUrl: "/images/projects/food-project.jpg",
+        fullImageUrl: "/images/projects/full/food-project-full.jpg",
         tech: ["HTML", "JavaScript", "JSON Server", "CSS"],
         liveUrl: "https://food-project-amber-phi.vercel.app",
         repoUrl: "https://github.com/blesswrld/food-project",
     },
     {
-        id: 5,
+        id: 4,
         title: "Rest Countries Project (Веб-приложение)",
         description:
             "Веб-приложение на React для исследования стран мира через Rest Countries API. Позволяет переключать темы, просматривать список стран, фильтровать их по названию или региону и изучать подробную информацию о выбранной стране.",
         imageUrl: "/images/projects/rest-countries-api.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/rest-countries-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/rest-countries-full-tab-2.jpg",
+            },
+        ],
         tech: ["React", "JS (Hooks)", "API Integration", "Styled Components"],
         liveUrl: "https://rest-countries-api-ten-xi.vercel.app",
         repoUrl: "https://github.com/blesswrld/REST-Countries-Api",
     },
     {
-        id: 6,
+        id: 5,
         title: "Filmix (Веб-приложение)",
         description:
             "Веб-приложение для поиска информации о фильмах и сериалах. Использует Kinopoisk API для получения актуальных данных: списки популярных фильмов, постеры, описания и рейтинги. Позволяет пользователям удобно навигироваться по каталогу.",
         imageUrl: "/images/projects/filmix-project.jpg",
+        fullImageUrl: "/images/projects/full/filmix-project-full.jpg",
         tech: ["React", "JavaScript", "API Integration", "MUI", "Vite", "Sass"],
         liveUrl: "https://filmix-react.vercel.app",
         repoUrl: "https://github.com/blesswrld/filmix-react",
     },
     {
-        id: 7,
+        id: 6,
         title: "CodeSync (Платформа для созвонов)",
         description:
             "Платформа для видеоконференций на Next.js. Реализованы групповые звонки с помощью Stream.io и аутентификация через Clerk. Интерфейс построен на Shadcn UI и Tailwind CSS. В качестве базы данных используется Convex.",
         imageUrl: "/images/projects/codesync-platform.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/codesync-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/codesync-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl: "/images/projects/tabs/codesync-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl: "/images/projects/tabs/codesync-full-tab-4.jpg",
+            },
+            {
+                name: "5",
+                imageUrl: "/images/projects/tabs/codesync-full-tab-5.jpg",
+            },
+            {
+                name: "6",
+                imageUrl: "/images/projects/tabs/codesync-full-tab-6.jpg",
+            },
+        ],
         tech: [
             "Next.js",
             "React",
@@ -69,11 +135,12 @@ export const projectsData = [
         repoUrl: "https://github.com/blesswrld/CodeSync-react-platform",
     },
     {
-        id: 8,
+        id: 7,
         title: "PingMe (Мессенджер)",
         description:
             "Веб-мессенджер на React с обменом сообщениями в реальном времени через Socket.io. Для хранения файлов интегрировано облачное хранилище Yandex.Cloud. В качестве базы данных используется MongoDB. Стилизация на Tailwind CSS.",
         imageUrl: "/images/projects/pingme-messanger.jpg",
+        inDevelopment: true, // <-- ДОБАВЛЯЕМ СТАТУС "В РАЗРАБОТКЕ"
         tech: [
             "React",
             "JavaScript",
@@ -84,35 +151,38 @@ export const projectsData = [
             "Tailwind CSS",
             "Vite",
         ],
-        liveUrl: "https://pingme-react-messanger.onrender.com",
+        liveUrl: "#",
         repoUrl: "https://github.com/blesswrld/PingMe-react-messanger",
     },
     {
-        id: 9,
+        id: 8,
         title: "Ceramic Soul (Многостраничный сайт)",
         description:
             "Адаптивный сайт для студии керамики, разработанный для демонстрации и продажи изделий. Сверстан по макету из Figma, стилизация выполнена с использованием Sass. JavaScript применен для интерактивных элементов. Проект собран с помощью Vite.",
         imageUrl: "/images/projects/ceramic-soul.jpg",
+        fullImageUrl: "/images/projects/full/ceramic-soul-full.jpg",
         tech: ["HTML", "Sass", "JavaScript", "Vite"],
         liveUrl: "https://ceramic-soul.vercel.app",
         repoUrl: "https://github.com/blesswrld/ceramic-soul",
     },
     {
-        id: 10,
+        id: 9,
         title: "Mojito (Анимированный лендинг)",
         description:
             "Элегантный и динамичный лендинг для коктейльного бара с акцентом на премиальный визуал. Использована библиотека GSAP для создания сложных и производительных анимационных эффектов, включая параллакс и анимированное появление элементов.",
         imageUrl: "/images/projects/gsap-mojito.jpg",
+        fullImageUrl: "/images/projects/full/gsap-mojito-full.jpg",
         tech: ["React", "GSAP", "TailwindCSS", "Vite"],
         liveUrl: "https://gsap-mojito-phi.vercel.app",
         repoUrl: "https://github.com/blesswrld/gsap-mojito",
     },
     {
-        id: 11,
+        id: 10,
         title: "Apple iPhone (Анимированный лендинг)",
         description:
             "Интерактивный лендинг, воссоздающий продуктовую страницу Apple. Реализован с помощью React Three Fiber для отображения и управления 3D-моделью iPhone. Для всех анимаций, включая скролл-триггеры и синхронизированный видео-карусель, использована библиотека GSAP.",
         imageUrl: "/images/projects/apple-iphone.jpg",
+        fullImageUrl: "/images/projects/full/apple-iphone-full.jpg",
         tech: [
             "React",
             "GSAP",
@@ -125,21 +195,23 @@ export const projectsData = [
         repoUrl: "https://github.com/blesswrld/apple-iphone",
     },
     {
-        id: 12,
+        id: 11,
         title: "Brainwave (SaaS Лендинг)",
         description:
             "Современный и полностью адаптивный лендинг для SaaS-платформы с использованием React и Vite. Проект демонстрирует сложные CSS-техники и кастомные решения на TailwindCSS, включая продвинутые градиенты, SVG-анимации и параллакс-эффекты.",
         imageUrl: "/images/projects/brainwave.jpg",
+        fullImageUrl: "/images/projects/full/brainwave-full.jpg",
         tech: ["React", "React Router", "TailwindCSS", "Vite"],
         liveUrl: "https://brainwave-sooty-ten.vercel.app",
         repoUrl: "https://github.com/blesswrld/brainwave",
     },
     {
-        id: 13,
+        id: 12,
         title: "FlowState (Канбан-доска)",
         description:
             "Интерактивный Канбан-менеджер на Next.js с чистой архитектурой на кастомных хуках. Реализован drag-and-drop задач с помощью dnd-kit, создание, удаление, поиск и фильтрация. Состояние сохраняется в localStorage. Для улучшения UX встроены toast-уведомления и анимация конфетти.",
         imageUrl: "/images/projects/flowstate-kanban.jpg",
+        fullImageUrl: "/images/projects/full/flowstate-kanban-full.jpg",
         tech: [
             "Next.js",
             "React (Hooks)",
@@ -154,11 +226,23 @@ export const projectsData = [
         repoUrl: "https://github.com/blesswrld/flowstate-kanban",
     },
     {
-        id: 14,
+        id: 13,
         title: "Momentum (Трекер привычек)",
         description:
             "Минималистичный трекер привычек на Next.js. Позволяет добавлять кастомные привычки с периодом до года, отслеживать прогресс в интерактивной сетке и видеть счетчик оставшихся дней. Реализован поиск и сохранение в localStorage. UX улучшен за счет toast-уведомлений и анимации конфетти.",
         imageUrl: "/images/projects/momentum-tracker.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl:
+                    "/images/projects/tabs/momentum-tracker-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl:
+                    "/images/projects/tabs/momentum-tracker-full-tab-2.jpg",
+            },
+        ],
         tech: [
             "Next.js",
             "React (Hooks)",
@@ -173,11 +257,21 @@ export const projectsData = [
         repoUrl: "https://github.com/blesswrld/momentum-tracker",
     },
     {
-        id: 15,
+        id: 14,
         title: "ChromaGen (AI-генератор палитр)",
         description:
-            "Веб-приложение на Next.js для генерации цветовых палитр с помощью AI. Пользователь может создавать палитры по текстовому описанию, используя разные AI-модели (Groq, Hugging Face), или извлекать доминирующие цвета из загруженного изображения. Реализован расширенный функционал: история генераций с выборочным экспортом в CSS, 'заморозка' цветов и настройка параметров генерации. Интерфейс построен на Geist UI и Tailwind CSS.",
+            "Веб-приложение на Next.js для генерации цветовых палитр с помощью AI. Пользователь может создавать палитры по текстовому описанию, используя разные AI-модели (Groq, Hugging Face), или извлекать доминирующие цвета из загруженного изображения.",
         imageUrl: "/images/projects/chromagen-ai.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/chromagen-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/chromagen-full-tab-2.jpg",
+            },
+        ],
         tech: [
             "Next.js",
             "React (Hooks)",

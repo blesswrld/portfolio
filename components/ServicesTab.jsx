@@ -1,4 +1,5 @@
 "use client";
+
 import { servicesData } from "../data/servicesData";
 import { ServiceCard } from "./ServiceCard";
 import { motion } from "framer-motion";

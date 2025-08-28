@@ -43,14 +43,17 @@ export default function HomePage() {
     return (
         <main className="flex w-full justify-center px-4 py-16 sm:py-24">
             <div className="w-full max-w-5xl">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-                        Тамерлан Гельгаев
-                    </h1>
-                    <p className="mt-4 text-lg md:text-xl text-white/60">
-                        Frontend Разработчик
-                    </p>
-                </div>
+                {/* Показываем заголовок только если выбрана НЕ вкладка "Контакты" */}
+                {tabsConfig[selectedIndex].name !== "Контакты" && (
+                    <div className="text-center mb-12">
+                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+                            Тамерлан Гельгаев
+                        </h1>
+                        <p className="mt-4 text-lg md:text-xl text-white/60">
+                            Frontend Разработчик
+                        </p>
+                    </div>
+                )}
 
                 {/* Управляем TabGroup через состояние */}
                 <TabGroup

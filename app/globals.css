@@ -36,3 +36,18 @@ body {
     opacity: 1;
     transform: rotate(3deg) translate(0px, -4px);
 }
+
+.tech-group-container {
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.tech-group-container::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 1.5rem;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--line-color); /* Используем переменную */
+}
