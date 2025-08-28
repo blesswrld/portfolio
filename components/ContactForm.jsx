@@ -1,9 +1,9 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { Button } from "./ui/Button";
+import toast from "react-hot-toast"; // <-- Импортируем toast
 
 export function ContactForm() {
     const {
@@ -17,18 +17,35 @@ export function ContactForm() {
     const onSubmit = async (data) => {
         setIsSubmitting(true);
 
+        const templateParams = {
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            time: new Date().toLocaleString("ru-RU", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+            }),
+        };
+
         try {
             await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-                data,
+                templateParams, // <-- Используем templateParams с временем
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
             );
-            alert("Сообщение успешно отправлено!");
+
+            // --- УВЕДОМЛЕНИЕ ОБ УСПЕХЕ ---
+            toast.success("Сообщение успешно отправлено!");
             reset();
         } catch (error) {
+            // --- УВЕДОМЛЕНИЕ ОБ ОШИБКЕ ---
+            toast.error("Что-то пошло не так. Попробуйте позже.");
+            // Логируем ошибку в консоль
             console.error("ОШИБКА EmailJS:", error);
-            alert("Что-то пошло не так.");
         } finally {
             setIsSubmitting(false);
         }

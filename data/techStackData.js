@@ -148,7 +148,7 @@ export const techStackData = [
                 name: "Convex",
                 bgColor: "#7B61FF",
                 logoColor: "white",
-                logo: "convex",
+                /* logo: "convex", */
             },
             {
                 name: "Supabase",

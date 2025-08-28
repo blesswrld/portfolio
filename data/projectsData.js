@@ -73,6 +73,14 @@ export const projectsData = [
                 name: "2",
                 imageUrl: "/images/projects/tabs/rest-countries-full-tab-2.jpg",
             },
+            {
+                name: "3",
+                imageUrl: "/images/projects/tabs/rest-countries-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl: "/images/projects/tabs/rest-countries-full-tab-4.jpg",
+            },
         ],
         tech: ["React", "JS (Hooks)", "API Integration", "Styled Components"],
         liveUrl: "https://rest-countries-api-ten-xi.vercel.app",
@@ -84,7 +92,24 @@ export const projectsData = [
         description:
             "Веб-приложение для поиска информации о фильмах и сериалах. Использует Kinopoisk API для получения актуальных данных: списки популярных фильмов, постеры, описания и рейтинги. Позволяет пользователям удобно навигироваться по каталогу.",
         imageUrl: "/images/projects/filmix-project.jpg",
-        fullImageUrl: "/images/projects/full/filmix-project-full.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/filmix-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/filmix-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl: "/images/projects/tabs/filmix-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl: "/images/projects/tabs/filmix-full-tab-4.jpg",
+            },
+        ],
         tech: ["React", "JavaScript", "API Integration", "MUI", "Vite", "Sass"],
         liveUrl: "https://filmix-react.vercel.app",
         repoUrl: "https://github.com/blesswrld/filmix-react",
@@ -160,7 +185,24 @@ export const projectsData = [
         description:
             "Адаптивный сайт для студии керамики, разработанный для демонстрации и продажи изделий. Сверстан по макету из Figma, стилизация выполнена с использованием Sass. JavaScript применен для интерактивных элементов. Проект собран с помощью Vite.",
         imageUrl: "/images/projects/ceramic-soul.jpg",
-        fullImageUrl: "/images/projects/full/ceramic-soul-full.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/ceramic-soul-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/ceramic-soul-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl: "/images/projects/tabs/ceramic-soul-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl: "/images/projects/tabs/ceramic-soul-full-tab-4.jpg",
+            },
+        ],
         tech: ["HTML", "Sass", "JavaScript", "Vite"],
         liveUrl: "https://ceramic-soul.vercel.app",
         repoUrl: "https://github.com/blesswrld/ceramic-soul",
@@ -285,5 +327,31 @@ export const projectsData = [
         ],
         liveUrl: "https://chromagen-ai.vercel.app",
         repoUrl: "https://github.com/blesswrld/chromagen-AI",
+    },
+    {
+        id: 16,
+        title: "Интерактивная Git Шпаргалка",
+        description:
+            "Веб-приложение на Next.js, представляющее собой умный справочник по командам Git. Реализован динамический поиск, фильтрация по категориям, интерактивные конструкторы команд и анимированные SVG-визуализации для сложных операций.",
+        imageUrl: "/images/projects/git-cheatsheet.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/git-cheatsheet-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/git-cheatsheet-full-tab-2.jpg",
+            },
+        ],
+        tech: [
+            "Next.js",
+            "React",
+            "Headless UI",
+            "Tailwind CSS",
+            "Framer Motion",
+        ],
+        liveUrl: "https://git-cheatsheet.vercel.app/",
+        repoUrl: "https://github.com/blesswrld/git-cheatsheet-app",
     },
 ];

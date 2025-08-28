@@ -18,12 +18,10 @@ const categoryLineColors = {
 
 // Компонент бейджа
 const TechBadge = ({ name, bgColor, logoColor, logo }) => (
-    <a
-        href={logo ? `https://simpleicons.org/icons/${logo}` : "#"}
-        target="_blank"
-        rel="noopener noreferrer"
+    <span
         style={{ backgroundColor: bgColor, color: logoColor }}
-        className="flex items-center gap-2 px-2.5 py-1 rounded text-sm font-bold transition-transform hover:scale-105"
+        className="flex items-center gap-2 px-2.5 py-1 rounded text-sm font-bold transition-transform hover:scale-105 cursor-pointer"
+        title={name} // Добавляем title для подсказки при наведении
     >
         {logo && (
             <img
@@ -36,7 +34,7 @@ const TechBadge = ({ name, bgColor, logoColor, logo }) => (
             />
         )}
         {name}
-    </a>
+    </span>
 );
 
 export const ResumeTab = () => (

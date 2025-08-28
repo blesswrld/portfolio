@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Toaster } from "react-hot-toast"; // <-- 1. Импортируем Toaster
 
 const siteUrl = new URL("https://www.gelgaevdev.ru");
 
@@ -88,7 +89,38 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="ru">
-            <body>{children}</body>
+            <body>
+                {children}
+                {/* 
+                  2. Добавляем компонент Toaster.
+                  Он будет "слушать" вызовы toast() и отображать уведомления.
+                */}
+                <Toaster
+                    position="bottom-right" // Позиция на экране
+                    toastOptions={{
+                        // Стили для соответствия вашему дизайну
+                        style: {
+                            background: "#1E293B", // slate-800
+                            color: "#E2E8F0", // slate-200
+                            border: "1px solid rgba(255, 255, 255, 0.1)",
+                        },
+                        // Стили для иконки успеха
+                        success: {
+                            iconTheme: {
+                                primary: "#34D399", // emerald-400
+                                secondary: "#1E293B",
+                            },
+                        },
+                        // Стили для иконки ошибки
+                        error: {
+                            iconTheme: {
+                                primary: "#F87171", // red-400
+                                secondary: "#1E293B",
+                            },
+                        },
+                    }}
+                />
+            </body>
         </html>
     );
 }
