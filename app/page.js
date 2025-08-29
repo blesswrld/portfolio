@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { ResumeTab } from "@/components/ResumeTab";
 import { PortfolioTab } from "@/components/PortfolioTab";
@@ -11,45 +11,87 @@ import { Footer } from "@/components/Footer";
 
 // Выносим массив наружу, чтобы получить доступ к индексам
 const tabsConfig = [
-    { name: "Резюме", component: <ResumeTab /> },
-    { name: "Портфолио", component: <PortfolioTab /> },
-    { name: "Услуги", component: <ServicesTab /> },
-    { name: "Контакты", component: <ContactTab /> },
+    { name: "Резюме", component: <ResumeTab />, hash: "resume" },
+    { name: "Портфолио", component: <PortfolioTab />, hash: "portfolio" },
+    { name: "Услуги", component: <ServicesTab />, hash: "services" },
+    { name: "Контакты", component: <ContactTab />, hash: "contact" },
 ];
 
 export default function HomePage() {
     // Состояние для отслеживания активной вкладки
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(null);
     const tabPanelsRef = useRef(null);
 
-    // Функция для программного переключения на вкладку "Контакты"
+    useEffect(() => {
+        // Эта функция будет вызвана только в браузере
+        const updateTabFromHash = () => {
+            const currentHash = window.location.hash.replace("#", "");
+            if (currentHash) {
+                const initialIndex = tabsConfig.findIndex(
+                    (tab) => tab.hash === currentHash
+                );
+                if (initialIndex !== -1) {
+                    setSelectedIndex(initialIndex);
+                } else {
+                    // Если хеш неверный, устанавливаем по умолчанию
+                    setSelectedIndex(0);
+                }
+            } else {
+                // Если хеша нет, устанавливаем по умолчанию
+                setSelectedIndex(0);
+            }
+        };
+
+        // Вызываем функцию при первой загрузке
+        updateTabFromHash();
+
+        // Добавляем слушатель события, чтобы отслеживать нажатия кнопок "назад/вперед" в браузере
+        window.addEventListener("hashchange", updateTabFromHash);
+
+        // Очищаем слушатель при размонтировании компонента
+        return () => {
+            window.removeEventListener("hashchange", updateTabFromHash);
+        };
+    }, []); // Пустой массив зависимостей гарантирует, что эффект выполнится один раз
+
     const switchToContactTab = () => {
         const contactTabIndex = tabsConfig.findIndex(
             (tab) => tab.name === "Контакты"
         );
         if (contactTabIndex !== -1) {
             setSelectedIndex(contactTabIndex);
+            // Обновляем хеш и скроллим
+            window.location.hash = tabsConfig[contactTabIndex].hash;
+            tabPanelsRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
         }
     };
 
     const handleTabChange = (index) => {
         setSelectedIndex(index);
-        // Плавный скролл при клике на таб
-        tabPanelsRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
+        // Обновляем хеш в URL при смене вкладки
+        window.location.hash = tabsConfig[index].hash;
     };
 
-    const tabs = [
-        { name: "Резюме", component: <ResumeTab /> },
-        { name: "Портфолио", component: <PortfolioTab /> },
-        {
-            name: "Услуги",
-            component: <ServicesTab onDiscussProject={switchToContactTab} />,
-        },
-        { name: "Контакты", component: <ContactTab /> },
-    ];
+    // Обновляем массив tabs, чтобы он использовал tabsConfig
+    const tabs = tabsConfig.map((tab) => {
+        if (tab.name === "Услуги") {
+            return {
+                ...tab,
+                component: (
+                    <ServicesTab onDiscussProject={switchToContactTab} />
+                ),
+            };
+        }
+        return tab;
+    });
+
+    // --- ДОБАВЛЯЕМ ПРОВЕРКУ НА ЗАГРУЗКУ ---
+    if (selectedIndex === null) {
+        return null; // или <YourLoaderComponent />
+    }
 
     return (
         <>
@@ -95,7 +137,7 @@ export default function HomePage() {
                     </TabGroup>
                 </div>
             </main>
-            <Footer />
+            <Footer selectedIndex={selectedIndex} />
         </>
     );
 }

@@ -354,4 +354,32 @@ export const projectsData = [
         liveUrl: "https://git-cheatsheet.vercel.app/",
         repoUrl: "https://github.com/blesswrld/git-cheatsheet-app",
     },
+    {
+        id: 17,
+        title: "PearDrop (P2P Файлообменник)",
+        description:
+            "Веб-приложение для прямой P2P-передачи файлов между двумя браузерами с использованием технологии WebRTC. Реализовано на Vite + React и PeerJS, что обеспечивает безопасный обмен данными без промежуточного сервера.",
+        imageUrl: "/images/projects/pear-drop.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/pear-drop-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/pear-drop-full-tab-2.jpg",
+            },
+        ],
+        tech: [
+            "React",
+            "TypeScript",
+            "Vite",
+            "PeerJS",
+            "WebRTC",
+            "NextUI",
+            "Tailwind CSS",
+        ],
+        liveUrl: "https://pear-drop.vercel.app",
+        repoUrl: "https://github.com/blesswrld/pear-drop",
+    },
 ];

@@ -4,9 +4,17 @@ import { useState } from "react";
 import { Github, Send } from "lucide-react";
 import { PrivacyModal } from "./PrivacyModal";
 
-export const Footer = () => {
+export function Footer({ selectedIndex }) {
     const [isPrivacyModalOpen, setPrivacyModalOpen] = useState(false);
     const currentYear = new Date().getFullYear();
+
+    // Индекс вкладки "Контакты" в массиве tabsConfig равен 3
+    const contactTabIndex = 3;
+
+    // Если активна вкладка контактов, не рендерим ничего
+    if (selectedIndex === contactTabIndex) {
+        return null;
+    }
 
     return (
         <>
@@ -51,4 +59,4 @@ export const Footer = () => {
             />
         </>
     );
-};
+}
