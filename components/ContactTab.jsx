@@ -2,7 +2,7 @@
 
 import { ContactForm } from "./ContactForm";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Github, Send } from "lucide-react";
 
 export const ContactTab = () => (
