@@ -382,4 +382,44 @@ export const projectsData = [
         liveUrl: "https://pear-drop.vercel.app",
         repoUrl: "https://github.com/blesswrld/pear-drop",
     },
+
+    {
+        id: 18,
+        title: "Nextman (API Клиент)",
+        description:
+            "Полнофункциональный веб-клиент для работы с API, разработанный на Next.js как аналог Postman. Приложение поддерживает создание и управление коллекциями, историю запросов, динамические окружения с переменными и аутентификацию через GitHub и Google. Одной из ключевых фич является возможность делиться запросами с ответами через уникальные публичные ссылки. Состояние приложения управляется с помощью Zustand, а для хранения данных используется Supabase.",
+        imageUrl: "/images/projects/nextman-api.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl: "/images/projects/tabs/nextman-api-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl: "/images/projects/tabs/nextman-api-full-tab-2.jpg",
+            },
+
+            {
+                name: "3",
+                imageUrl: "/images/projects/tabs/nextman-api-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl: "/images/projects/tabs/nextman-api-full-tab-4.jpg",
+            },
+        ],
+        tech: [
+            "Next.js",
+            "React (Hooks)",
+            "TypeScript",
+            "Supabase",
+            "Zustand",
+            "Tailwind CSS",
+            "Shadcn UI",
+            "i18next",
+            "Framer Motion",
+        ],
+        liveUrl: "https://nextman-api.vercel.app",
+        repoUrl: "https://github.com/blesswrld/nextman-api",
+    },
 ];
