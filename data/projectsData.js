@@ -422,4 +422,53 @@ export const projectsData = [
         liveUrl: "https://nextman-api.vercel.app",
         repoUrl: "https://github.com/blesswrld/nextman-api",
     },
+    {
+        id: 19,
+        title: "GitHub Profile Analyzer (Аналитический дашборд)",
+        description:
+            "Полнофункциональное веб-приложение на Next.js для глубокого анализа профилей GitHub. Генерирует интерактивные дашборды со статистикой по языкам, репозиториям и активности пользователя. Реализована аутентификация через Supabase, динамическая смена тем, адаптивная верстка и возможность сравнения двух профилей.",
+        imageUrl: "/images/projects/github-analyzer.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl:
+                    "/images/projects/tabs/github-analyzer-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl:
+                    "/images/projects/tabs/github-analyzer-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl:
+                    "/images/projects/tabs/github-analyzer-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl:
+                    "/images/projects/tabs/github-analyzer-full-tab-4.jpg",
+            },
+            {
+                name: "5",
+                imageUrl:
+                    "/images/projects/tabs/github-analyzer-full-tab-5.jpg",
+            },
+        ],
+        tech: [
+            "Next.js",
+            "React (Hooks)",
+            "TypeScript",
+            "Supabase",
+            "Tailwind CSS",
+            "Shadcn UI",
+            "Nivo (Charts)",
+            "Framer Motion",
+            "TanStack Query",
+            "Lucide React",
+            "Sonner (Toasts)",
+        ],
+        liveUrl: "https://github-analyzer-self.vercel.app",
+        repoUrl: "https://github.com/blesswrld/github-analyzer",
+    },
 ];
