@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Toaster } from "react-hot-toast"; // <-- 1. Импортируем Toaster
+import { Toaster } from "react-hot-toast";
 
 const siteUrl = new URL("https://www.gelgaevdev.ru");
 

@@ -33,6 +33,17 @@ export const techStackData = [
                 logo: "tailwindcss",
             },
             {
+                name: "NextUI",
+                bgColor: "#000000",
+                logoColor: "white",
+            },
+            {
+                name: "Headless UI",
+                bgColor: "#06B6D4",
+                logoColor: "white",
+                logo: "headlessui",
+            },
+            {
                 name: "DaisyUI",
                 bgColor: "#5A0EF8",
                 logoColor: "white",
@@ -80,16 +91,33 @@ export const techStackData = [
                 logo: "redux",
             },
             {
+                name: "i18next",
+                bgColor: "#26A69A",
+                logoColor: "white",
+                logo: "i18next",
+            },
+            {
                 name: "Axios",
                 bgColor: "#5A29E4",
                 logoColor: "white",
                 logo: "axios",
             },
             {
+                name: "TanStack Query",
+                bgColor: "#FF4154",
+                logoColor: "white",
+            },
+            {
                 name: "Socket.io",
                 bgColor: "#010101",
                 logoColor: "white",
                 logo: "socketdotio",
+            },
+            {
+                name: "WebRTC",
+                bgColor: "#333333",
+                logoColor: "white",
+                logo: "webrtc",
             },
             {
                 name: "React Router",
@@ -109,6 +137,7 @@ export const techStackData = [
                 logoColor: "black",
                 logo: "greensock",
             },
+            { name: "Nivo (Charts)", bgColor: "#4682b4", logoColor: "white" },
         ],
     },
     {

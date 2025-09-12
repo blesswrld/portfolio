@@ -18,7 +18,7 @@ export const SpotlightCard = ({ children }) => {
         <div
             ref={cardRef}
             onMouseMove={handleMouseMove}
-            className="spotlight-card relative h-full isolate rounded-xl overflow-hidden"
+            className="relative h-full isolate rounded-xl overflow-hidden"
         >
             {children}
         </div>

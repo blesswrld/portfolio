@@ -1,4 +1,4 @@
-"use client"; // Директива "use client" теперь нужна только для обертки
+"use client"; // Директива "use client" нужна только для обертки
 
 import { useRef } from "react";
 import { Button } from "./ui/Button";

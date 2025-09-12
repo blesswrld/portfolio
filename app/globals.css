@@ -108,26 +108,3 @@ body {
         );
     animation: aurora 20s linear infinite;
 }
-
-.spotlight-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    background: radial-gradient(
-        300px circle at var(--mouse-x) var(--mouse-y),
-        rgba(255, 255, 255, 0.1),
-        transparent 80%
-    );
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: -1;
-}
-
-/* Показываем подсветку при наведении */
-.spotlight-card:hover::before {
-    opacity: 1;
-}
