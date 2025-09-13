@@ -17,20 +17,40 @@ import {
     MagnifyingGlassMinusIcon,
 } from "@heroicons/react/24/solid";
 import { useState, useEffect } from "react";
+import { Loader2 } from "lucide-react";
 
 // --- КОМПОНЕНТ ДЛЯ ОТОБРАЖЕНИЯ ИЗОБРАЖЕНИЯ С МАСШТАБОМ ---
-const ZoomableImage = ({ src, alt, scale, onDoubleClick }) => {
+const ZoomableImage = ({
+    src,
+    alt,
+    scale,
+    onDoubleClick,
+    isLoading,
+    onImageLoad,
+}) => {
     return (
-        <img
-            src={src}
-            alt={alt}
-            className="transition-transform duration-200 ease-out origin-center"
-            style={{
-                transform: `scale(${scale})`,
-                touchAction: "none",
-            }}
-            onDoubleClick={onDoubleClick}
-        />
+        <div className="relative w-full min-h-full flex items-center justify-center bg-white/5 rounded-md">
+            {/* Условно рендерим лоадер */}
+            {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <Loader2 className="h-12 w-12 text-white/50 animate-spin" />
+                </div>
+            )}
+
+            <img
+                src={src}
+                alt={alt}
+                onLoad={onImageLoad} // Сообщаем о загрузке
+                className={`transition-opacity duration-300 ease-out origin-center ${
+                    isLoading ? "opacity-0" : "opacity-100" // Плавное появление
+                }`}
+                style={{
+                    transform: `scale(${scale})`,
+                    touchAction: "none",
+                }}
+                onDoubleClick={onDoubleClick}
+            />
+        </div>
     );
 };
 
@@ -47,7 +67,13 @@ const ScreenshotWarning = () => (
 );
 
 // Компонент для рендеринга контента внутри модалки
-const ModalContent = ({ project, scale, onDoubleClick }) => {
+const ModalContent = ({
+    project,
+    scale,
+    onDoubleClick,
+    isLoading,
+    onImageLoad,
+}) => {
     // Если у проекта есть вкладки (tabs) - рендерим их
     if (project.tabs && project.tabs.length > 0) {
         return (
@@ -76,6 +102,8 @@ const ModalContent = ({ project, scale, onDoubleClick }) => {
                                     alt={`Скриншот: ${tab.name}`}
                                     scale={scale}
                                     onDoubleClick={onDoubleClick}
+                                    isLoading={isLoading}
+                                    onImageLoad={onImageLoad}
                                 />
                             </TabPanel>
                         ))}
@@ -95,6 +123,8 @@ const ModalContent = ({ project, scale, onDoubleClick }) => {
                     alt={`Полный скриншот проекта ${project.title}`}
                     scale={scale}
                     onDoubleClick={onDoubleClick}
+                    isLoading={isLoading}
+                    onImageLoad={onImageLoad}
                 />
             </div>
         );
@@ -112,12 +142,18 @@ export const ProjectModal = ({ project, onClose }) => {
     const isOpen = Boolean(project);
     const [scale, setScale] = useState(1);
 
+    // Cостояние для отслеживания загрузки
+    const [isLoading, setIsLoading] = useState(true);
+
     // Сбрасываем зум при открытии нового проекта
     useEffect(() => {
         if (project) {
             setScale(1);
+            setIsLoading(true); // Сбрасываем лоадер для нового проекта
         }
     }, [project]);
+
+    const handleImageLoad = () => setIsLoading(false); // Функция для скрытия лоадера
 
     const handleZoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3));
     const handleZoomOut = () => setScale((prev) => Math.max(1, prev - 0.2));
@@ -162,10 +198,13 @@ export const ProjectModal = ({ project, onClose }) => {
 
                             <DialogPanel className="relative w-full max-w-4xl rounded-xl bg-slate-900/80 border border-white/10 p-4 backdrop-blur-xl overflow-hidden">
                                 <div className="max-h-[85vh] overflow-y-auto rounded-lg">
+                                    {/* Передаем состояние и функцию в ModalContent */}
                                     <ModalContent
                                         project={project}
                                         scale={scale}
                                         onDoubleClick={handleDoubleClick}
+                                        isLoading={isLoading}
+                                        onImageLoad={handleImageLoad}
                                     />
                                 </div>
 
