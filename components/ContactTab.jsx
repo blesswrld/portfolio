@@ -3,7 +3,7 @@
 import { ContactForm } from "./ContactForm";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { Github, Send } from "lucide-react";
+import { Github, MessageCircle, Send } from "lucide-react";
 
 export const ContactTab = () => (
     <motion.div
@@ -32,7 +32,7 @@ export const ContactTab = () => (
             <p className="text-white/60 mb-4">
                 Или свяжитесь со мной напрямую:
             </p>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-0 md:gap-4">
                 <a
                     href="https://t.me/timammn"
                     target="_blank"
@@ -47,6 +47,22 @@ export const ContactTab = () => (
                         Telegram
                     </Button>
                 </a>
+
+                <a
+                    href="https://wa.me/79957015741"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-80 transition-opacity duration-200"
+                >
+                    <Button
+                        variant="outline"
+                        className="flex flex-col justify-center items-center h-28 w-28"
+                    >
+                        <MessageCircle className="mb-2 h-5 w-5" />
+                        WhatsApp
+                    </Button>
+                </a>
+
                 <a
                     href="https://github.com/blesswrld"
                     target="_blank"
