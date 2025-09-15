@@ -5,7 +5,7 @@ export const PrivacyPolicy = () => (
         <h2>Политика конфиденциальности</h2>
         <p>
             <strong>
-                Последнее обновление: {new Date().toLocaleDateString("ru-RU")}
+                <strong>Последнее обновление: 29.08.2025</strong>
             </strong>
         </p>
 
