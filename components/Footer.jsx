@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Github, Send } from "lucide-react";
+import { Github, Send, MessageCircle } from "lucide-react";
 import { PrivacyModal } from "./PrivacyModal";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/Tooltip";
 
 export function Footer({ selectedIndex }) {
     const [isPrivacyModalOpen, setPrivacyModalOpen] = useState(false);
@@ -29,26 +35,63 @@ export function Footer({ selectedIndex }) {
                             Политика конфиденциальности
                         </button>
                     </div>
-                    <div className="flex items-center justify-center gap-6">
-                        <a
-                            href="https://t.me/timammn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white/60 hover:text-white transition-colors"
-                            aria-label="Telegram"
-                        >
-                            <Send size={20} />
-                        </a>
-                        <a
-                            href="https://github.com/blesswrld"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white/60 hover:text-white transition-colors"
-                            aria-label="GitHub"
-                        >
-                            <Github size={20} />
-                        </a>
-                    </div>
+                    <TooltipProvider delayDuration={100}>
+                        <div className="flex items-center justify-center gap-6">
+                            {/* Тултип для Telegram */}
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <a
+                                        href="https://t.me/timammn"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-white transition-colors"
+                                        aria-label="Telegram"
+                                    >
+                                        <Send size={20} />
+                                    </a>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Telegram</p>
+                                </TooltipContent>
+                            </Tooltip>
+
+                            {/* Тултип для WhatsApp */}
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <a
+                                        href="https://wa.me/79957015741"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-white transition-colors"
+                                        aria-label="WhatsApp"
+                                    >
+                                        <MessageCircle size={20} />
+                                    </a>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>WhatsApp</p>
+                                </TooltipContent>
+                            </Tooltip>
+
+                            {/* Тултип для GitHub */}
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <a
+                                        href="https://github.com/blesswrld"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-white transition-colors"
+                                        aria-label="GitHub"
+                                    >
+                                        <Github size={20} />
+                                    </a>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>GitHub</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
+                    </TooltipProvider>
                 </div>
             </footer>
 
