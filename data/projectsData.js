@@ -1,7 +1,7 @@
 export const projectsData = [
     {
         id: 1, // Добавил ID для уникального ключа в React
-        title: "Irvas Project (Лендинг)",
+        title: "Irvas (Лендинг)",
         description:
             "Адаптивный лендинг, сверстанный по макету из Figma. Реализована интерактивность с помощью JavaScript, включая модальные окна, формы, слайдер и калькулятор для подбора окон. Стилизация выполнена с использованием CSS.",
         imageUrl: "/images/projects/irvas-project.jpg",
@@ -12,7 +12,7 @@ export const projectsData = [
     },
     {
         id: 2,
-        title: "Loan Project (Лендинг)",
+        title: "Loan (Лендинг)",
         description:
             "Адаптивный многостраничный сайт, сверстанный по макету Figma. Стилизация реализована с использованием Sass. JavaScript применен для создания интерактивных элементов. Интегрирован YouTube API для динамической подгрузки видео.",
         imageUrl: "/images/projects/loan-project.jpg",
@@ -48,7 +48,7 @@ export const projectsData = [
     },
     {
         id: 3,
-        title: "Food Project (Лендинг)",
+        title: "Food (Лендинг)",
         description:
             "Адаптивный лендинг по макету Figma. С помощью JavaScript реализованы интерактивные элементы: модальные окна и формы. Настроен JSON Server для динамической подгрузки данных и имитации отправки форм.",
 
@@ -60,7 +60,7 @@ export const projectsData = [
     },
     {
         id: 4,
-        title: "Rest Countries Project (Веб-приложение)",
+        title: "Rest Countries (Веб-приложение)",
         description:
             "Веб-приложение на React для исследования стран мира через Rest Countries API. Позволяет переключать темы, просматривать список стран, фильтровать их по названию или региону и изучать подробную информацию о выбранной стране.",
         imageUrl: "/images/projects/rest-countries-api.jpg",
