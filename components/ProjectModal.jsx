@@ -16,7 +16,7 @@ import {
     MagnifyingGlassPlusIcon,
     MagnifyingGlassMinusIcon,
 } from "@heroicons/react/24/solid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Loader2 } from "lucide-react";
 
 // --- КОМПОНЕНТ ДЛЯ ОТОБРАЖЕНИЯ ИЗОБРАЖЕНИЯ С МАСШТАБОМ ---
@@ -142,6 +142,8 @@ export const ProjectModal = ({ project, onClose }) => {
     const isOpen = Boolean(project);
     const [scale, setScale] = useState(1);
 
+    const closeButtonRef = useRef(null);
+
     // Cостояние для отслеживания загрузки
     const [isLoading, setIsLoading] = useState(true);
 
@@ -163,7 +165,12 @@ export const ProjectModal = ({ project, onClose }) => {
 
     return (
         <Transition appear show={isOpen}>
-            <Dialog as="div" className="relative z-50" onClose={onClose}>
+            <Dialog
+                as="div"
+                className="relative z-50"
+                onClose={onClose}
+                initialFocus={closeButtonRef} // Указываем начальный фокус
+            >
                 <TransitionChild
                     enter="ease-out duration-300"
                     enterFrom="opacity-0"
@@ -189,6 +196,7 @@ export const ProjectModal = ({ project, onClose }) => {
                             leaveTo="opacity-0 scale-95"
                         >
                             <button
+                                ref={closeButtonRef} // Привязываем ref к кнопке
                                 onClick={onClose}
                                 className="absolute -top-4 -right-4 z-20 p-2 rounded-full text-white/50 bg-black/50 hover:text-white hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors"
                                 aria-label="Закрыть"
