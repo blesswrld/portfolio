@@ -44,6 +44,12 @@ export const techStackData = [
                 logo: "headlessui",
             },
             {
+                name: "Radix UI",
+                bgColor: "#000000",
+                logoColor: "white",
+                logo: "radixui",
+            },
+            {
                 name: "DaisyUI",
                 bgColor: "#5A0EF8",
                 logoColor: "white",
@@ -108,6 +114,11 @@ export const techStackData = [
                 logoColor: "white",
             },
             {
+                name: "Sonner (Toasts)",
+                bgColor: "#000000",
+                logoColor: "white",
+            },
+            {
                 name: "Socket.io",
                 bgColor: "#010101",
                 logoColor: "white",
@@ -138,6 +149,11 @@ export const techStackData = [
                 logo: "greensock",
             },
             { name: "Nivo (Charts)", bgColor: "#4682b4", logoColor: "white" },
+            {
+                name: "Recharts",
+                bgColor: "#1E293B",
+                logoColor: "white",
+            },
         ],
     },
     {
