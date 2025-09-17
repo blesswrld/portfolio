@@ -382,7 +382,6 @@ export const projectsData = [
         liveUrl: "https://pear-drop.vercel.app",
         repoUrl: "https://github.com/blesswrld/pear-drop",
     },
-
     {
         id: 18,
         title: "Nextman (API Клиент)",
@@ -424,6 +423,52 @@ export const projectsData = [
     },
     {
         id: 19,
+        title: "Webhook Listener (Инструмент для разработчиков)",
+        description:
+            "Полнофункциональный инструмент для разработчиков, созданный для захвата, отладки и анализа вебхуков в реальном времени. Реализован на Next.js с использованием Supabase для аутентификации и хранения данных. Пользователи могут создавать уникальные эндпоинты, задавать кастомные пути и мгновенно просматривать детали входящих запросов (тело, заголовки, параметры).",
+        imageUrl: "/images/projects/webhook-listener.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl:
+                    "/images/projects/tabs/webhook-listener-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl:
+                    "/images/projects/tabs/webhook-listener-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl:
+                    "/images/projects/tabs/webhook-listener-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl:
+                    "/images/projects/tabs/webhook-listener-full-tab-4.jpg",
+            },
+            {
+                name: "5",
+                imageUrl:
+                    "/images/projects/tabs/webhook-listener-full-tab-5.jpg",
+            },
+        ],
+        tech: [
+            "Next.js",
+            "React (Hooks)",
+            "TypeScript",
+            "Supabase",
+            "Tailwind CSS",
+            "Shadcn UI",
+            "Sonner (Toasts)",
+            "lucide-react",
+        ],
+        liveUrl: "https://webhook-listener-delta.vercel.app",
+        repoUrl: "https://github.com/blesswrld/webhook-listener",
+    },
+    {
+        id: 20,
         title: "GitHub Profile Analyzer (Аналитический дашборд)",
         description:
             "Полнофункциональное веб-приложение на Next.js для глубокого анализа профилей GitHub. Генерирует интерактивные дашборды со статистикой по языкам, репозиториям и активности пользователя. Реализована аутентификация через Supabase, динамическая смена тем, адаптивная верстка и возможность сравнения двух профилей.",
@@ -472,7 +517,7 @@ export const projectsData = [
         repoUrl: "https://github.com/blesswrld/github-analyzer",
     },
     {
-        id: 20,
+        id: 21,
         title: "Currency Converter (Конвертер валют)",
         description:
             "Многостраничный финансовый дашборд на Next.js. Включает в себя конвертер валют с интерактивным графиком истории курса, таблицу актуальных курсов с выбором базовой валюты и трекер популярных криптовалют. Для мгновенной загрузки данных используются серверные компоненты Next.js. Пользовательский интерфейс построен на Tailwind CSS и Radix UI для максимальной доступности и кастомизации. Состояние выбора валют сохраняется в localStorage.",
