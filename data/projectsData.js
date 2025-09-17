@@ -471,4 +471,45 @@ export const projectsData = [
         liveUrl: "https://github-analyzer-self.vercel.app",
         repoUrl: "https://github.com/blesswrld/github-analyzer",
     },
+    {
+        id: 20,
+        title: "Currency Converter (Конвертер валют)",
+        description:
+            "Многостраничный финансовый дашборд на Next.js. Включает в себя конвертер валют с интерактивным графиком истории курса, таблицу актуальных курсов с выбором базовой валюты и трекер популярных криптовалют. Для мгновенной загрузки данных используются серверные компоненты Next.js. Пользовательский интерфейс построен на Tailwind CSS и Radix UI для максимальной доступности и кастомизации. Состояние выбора валют сохраняется в localStorage.",
+        imageUrl: "/images/projects/currency-converter.jpg",
+        tabs: [
+            {
+                name: "1",
+                imageUrl:
+                    "/images/projects/tabs/currency-converter-full-tab-1.jpg",
+            },
+            {
+                name: "2",
+                imageUrl:
+                    "/images/projects/tabs/currency-converter-full-tab-2.jpg",
+            },
+            {
+                name: "3",
+                imageUrl:
+                    "/images/projects/tabs/currency-converter-full-tab-3.jpg",
+            },
+            {
+                name: "4",
+                imageUrl:
+                    "/images/projects/tabs/currency-converter-full-tab-4.jpg",
+            },
+        ],
+        tech: [
+            "Next.js",
+            "React (Hooks)",
+            "TypeScript",
+            "Tailwind CSS",
+            "Radix UI",
+            "Recharts",
+            "Framer Motion",
+            "Sonner (Toasts)",
+        ],
+        liveUrl: "https://currency-converter-chi-seven-84.vercel.app",
+        repoUrl: "https://github.com/blesswrld/currency-converter",
+    },
 ];
