@@ -118,7 +118,7 @@ export default function HomePage() {
                             {tabs.map(({ name }) => (
                                 <Tab
                                     key={name}
-                                    className="rounded-full px-4 py-1.5 text-sm font-semibold text-white focus:outline-none data-[hover]:bg-white/10 data-[selected]:bg-white/20 data-[focus]:ring-2 data-[focus]:ring-white"
+                                    className="rounded-full px-4 py-1.5 text-sm font-semibold text-white focus:outline-none data-[hover]:bg-white/10 data-[selected]:bg-white/20 data-[focus]:ring-2 data-[focus]:ring-white transition-colors"
                                 >
                                     {name}
                                 </Tab>
