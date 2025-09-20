@@ -111,7 +111,7 @@ export const projectsData = [
             },
         ],
         tech: ["React", "JavaScript", "API Integration", "MUI", "Vite", "Sass"],
-        liveUrl: "https://filmix-react.vercel.app",
+        liveUrl: "https://filmix-demo.vercel.app",
         repoUrl: "https://github.com/blesswrld/filmix-react",
     },
     {
@@ -156,7 +156,7 @@ export const projectsData = [
             "Tailwind CSS",
             "Shadcn UI",
         ],
-        liveUrl: "https://codesync-react-platform.vercel.app",
+        liveUrl: "https://codesync-platform-demo.vercel.app",
         repoUrl: "https://github.com/blesswrld/CodeSync-react-platform",
     },
     {
@@ -165,7 +165,7 @@ export const projectsData = [
         description:
             "Веб-мессенджер на React с обменом сообщениями в реальном времени через Socket.io. Для хранения файлов интегрировано облачное хранилище Yandex.Cloud. В качестве базы данных используется MongoDB. Стилизация на Tailwind CSS.",
         imageUrl: "/images/projects/pingme-messanger.jpg",
-        inDevelopment: true, // <-- ДОБАВЛЯЕМ СТАТУС "В РАЗРАБОТКЕ"
+        inDevelopment: true, // <-- СТАТУС "В РАЗРАБОТКЕ"
         tech: [
             "React",
             "JavaScript",
