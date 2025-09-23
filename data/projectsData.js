@@ -5,7 +5,7 @@ export const projectsData = [
         description:
             "Адаптивный лендинг, сверстанный по макету из Figma. Реализована интерактивность с помощью JavaScript, включая модальные окна, формы, слайдер и калькулятор для подбора окон. Стилизация выполнена с использованием CSS.",
         imageUrl: "/images/projects/irvas-project.jpg",
-        fullImageUrl: "/images/projects/full/irvas-project-full.jpg",
+        fullImageUrl: "/images/projects/full/irvas-full.jpg",
         tech: ["HTML", "CSS", "JavaScript"],
         liveUrl: "https://irvas-project.vercel.app",
         repoUrl: "https://github.com/blesswrld/irvas-project",
@@ -53,7 +53,7 @@ export const projectsData = [
             "Адаптивный лендинг по макету Figma. С помощью JavaScript реализованы интерактивные элементы: модальные окна и формы. Настроен JSON Server для динамической подгрузки данных и имитации отправки форм.",
 
         imageUrl: "/images/projects/food-project.jpg",
-        fullImageUrl: "/images/projects/full/food-project-full.jpg",
+        fullImageUrl: "/images/projects/full/food-full.jpg",
         tech: ["HTML", "JavaScript", "JSON Server", "CSS"],
         liveUrl: "https://food-project-amber-phi.vercel.app",
         repoUrl: "https://github.com/blesswrld/food-project",
@@ -556,5 +556,16 @@ export const projectsData = [
         ],
         liveUrl: "https://currency-converter-chi-seven-84.vercel.app",
         repoUrl: "https://github.com/blesswrld/currency-converter",
+    },
+    {
+        id: 21,
+        title: "Green Space (Лендинг)",
+        description:
+            "Современный и полностью адаптивный лендинг для магазина комнатных растений, созданный с нуля на Vite. Реализован каталог товаров с комплексной системой фильтрации, включающей поиск по названию, кастомные селекторы, чекбоксы и ползунок для выбора цены. Особое внимание уделено чистой модульной архитектуре JavaScript и детальной стилизации всех интерактивных элементов для создания единого пользовательского опыта.",
+        imageUrl: "/images/projects/green-space.jpg",
+        fullImageUrl: "/images/projects/full/green-space-full.jpg",
+        tech: ["HTML", "CSS", "JavaScript", "Vite"],
+        liveUrl: "https://green-space-two.vercel.app",
+        repoUrl: "https://github.com/blesswrld/green-space",
     },
 ];
