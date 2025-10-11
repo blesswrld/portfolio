@@ -8,7 +8,7 @@ body {
 
 .tech-group {
     position: relative;
-    padding-left: 2.5rem; /* Отступ слева для линии и иконки */
+    padding-left: 2.5rem;
 }
 
 #nprogress {
@@ -16,7 +16,7 @@ body {
 }
 
 #nprogress .bar {
-    background: #0ea5e9; /* Tailwind sky-500 */
+    background: #0ea5e9;
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -25,7 +25,6 @@ body {
     height: 3px;
 }
 
-/* Эффект свечения */
 #nprogress .peg {
     display: block;
     position: absolute;
@@ -49,31 +48,29 @@ body {
     top: 1.5rem;
     bottom: 0;
     width: 2px;
-    background-color: var(--line-color); /* Используем переменную */
+    background-color: var(--line-color);
 }
 
-/* Работает в Chrome, Edge, Safari */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent; /* Прозрачный фон */
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый */
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     border: 2px solid transparent;
     background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.4); /* Чуть ярче при наведении */
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Работает в Firefox */
 * {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
@@ -109,10 +106,8 @@ body {
     animation: aurora 20s linear infinite;
 }
 
-
-
 @layer base {
-  :root {
+    :root {
         --background: 0 0% 100%;
         --foreground: 0 0% 3.9%;
         --card: 0 0% 100%;
@@ -139,7 +134,7 @@ body {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
     }
-  .dark {
+    .dark {
         --background: 0 0% 3.9%;
         --foreground: 0 0% 98%;
         --card: 0 0% 3.9%;
@@ -167,13 +162,11 @@ body {
     }
 }
 
-
-
 @layer base {
-  * {
-    @apply border-border;
+    * {
+        @apply border-border;
     }
-  body {
-    @apply bg-background text-foreground;
+    body {
+        @apply bg-background text-foreground;
     }
 }

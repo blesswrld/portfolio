@@ -48,7 +48,6 @@ export const metadata = {
             "Портфолио frontend-разработчика. Проекты, навыки и контакты для связи.",
         images: ["/preview-image.jpg"],
     },
-    // --- БЛОК ДЛЯ ИКОНОК И МАНИФЕСТА ---
     icons: {
         icon: [
             {
@@ -81,7 +80,7 @@ export const metadata = {
     },
     manifest: "/favicon/manifest.json",
     other: {
-        "msapplication-TileColor": "#000000", // Черный цвет для плитки Windows
+        "msapplication-TileColor": "#000000",
         "msapplication-TileImage": "/favicon/ms-icon-144x144.png",
     },
 };
@@ -94,26 +93,23 @@ export default function RootLayout({ children }) {
 
                 {children}
 
-                {/* Контейнер для уведомлений (Toaster) */}
                 <Toaster
                     position="bottom-right"
                     toastOptions={{
                         style: {
-                            background: "#1E293B", // slate-800
-                            color: "#E2E8F0", // slate-200
+                            background: "#1E293B",
+                            color: "#E2E8F0",
                             border: "1px solid rgba(255, 255, 255, 0.1)",
                         },
-                        // Стили для иконки успеха
                         success: {
                             iconTheme: {
-                                primary: "#34D399", // emerald-400
+                                primary: "#34D399",
                                 secondary: "#1E293B",
                             },
                         },
-                        // Стили для иконки ошибки
                         error: {
                             iconTheme: {
-                                primary: "#F87171", // red-400
+                                primary: "#F87171",
                                 secondary: "#1E293B",
                             },
                         },

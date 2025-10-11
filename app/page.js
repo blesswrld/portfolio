@@ -9,7 +9,6 @@ import { ContactTab } from "@/components/ContactTab";
 import { TabTransition } from "@/components/TabTransition";
 import { Footer } from "@/components/Footer";
 
-// Выносим массив наружу, чтобы получить доступ к индексам
 const tabsConfig = [
     { name: "Резюме", component: <ResumeTab />, hash: "resume" },
     { name: "Портфолио", component: <PortfolioTab />, hash: "portfolio" },
@@ -18,12 +17,10 @@ const tabsConfig = [
 ];
 
 export default function HomePage() {
-    // Состояние для отслеживания активной вкладки
     const [selectedIndex, setSelectedIndex] = useState(null);
     const tabPanelsRef = useRef(null);
 
     useEffect(() => {
-        // Эта функция будет вызвана только в браузере
         const updateTabFromHash = () => {
             const currentHash = window.location.hash.replace("#", "");
             if (currentHash) {
@@ -33,26 +30,21 @@ export default function HomePage() {
                 if (initialIndex !== -1) {
                     setSelectedIndex(initialIndex);
                 } else {
-                    // Если хеш неверный, устанавливаем по умолчанию
                     setSelectedIndex(0);
                 }
             } else {
-                // Если хеша нет, устанавливаем по умолчанию
                 setSelectedIndex(0);
             }
         };
 
-        // Вызываем функцию при первой загрузке
         updateTabFromHash();
 
-        // Добавляем слушатель события, чтобы отслеживать нажатия кнопок "назад/вперед" в браузере
         window.addEventListener("hashchange", updateTabFromHash);
 
-        // Очищаем слушатель при размонтировании компонента
         return () => {
             window.removeEventListener("hashchange", updateTabFromHash);
         };
-    }, []); // Пустой массив зависимостей гарантирует, что эффект выполнится один раз
+    }, []);
 
     const switchToContactTab = () => {
         const contactTabIndex = tabsConfig.findIndex(
@@ -60,7 +52,6 @@ export default function HomePage() {
         );
         if (contactTabIndex !== -1) {
             setSelectedIndex(contactTabIndex);
-            // Обновляем хеш и скроллим
             window.location.hash = tabsConfig[contactTabIndex].hash;
             tabPanelsRef.current?.scrollIntoView({
                 behavior: "smooth",
@@ -71,11 +62,9 @@ export default function HomePage() {
 
     const handleTabChange = (index) => {
         setSelectedIndex(index);
-        // Обновляем хеш в URL при смене вкладки
         window.location.hash = tabsConfig[index].hash;
     };
 
-    // Обновляем массив tabs, чтобы он использовал tabsConfig
     const tabs = tabsConfig.map((tab) => {
         if (tab.name === "Услуги") {
             return {
@@ -88,16 +77,14 @@ export default function HomePage() {
         return tab;
     });
 
-    // --- ДОБАВЛЯЕМ ПРОВЕРКУ НА ЗАГРУЗКУ ---
     if (selectedIndex === null) {
-        return null; // или <YourLoaderComponent />
+        return null;
     }
 
     return (
         <>
             <main className="flex w-full justify-center px-4 py-16 sm:py-24">
                 <div className="w-full max-w-5xl">
-                    {/* Показываем заголовок только если выбрана НЕ вкладка "Контакты" */}
                     {tabsConfig[selectedIndex].name !== "Контакты" && (
                         <div className="text-center mb-12">
                             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
@@ -109,7 +96,6 @@ export default function HomePage() {
                         </div>
                     )}
 
-                    {/* Управляем TabGroup через состояние */}
                     <TabGroup
                         selectedIndex={selectedIndex}
                         onChange={handleTabChange}
@@ -128,7 +114,6 @@ export default function HomePage() {
                             <TabTransition selectedIndex={selectedIndex}>
                                 {tabs.map(({ name, component }) => (
                                     <TabPanel key={name} unmount={false}>
-                                        {/* `unmount={false}` важно для плавных анимаций */}
                                         {component}
                                     </TabPanel>
                                 ))}

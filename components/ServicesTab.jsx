@@ -5,7 +5,6 @@ import { ServiceCard } from "./ServiceCard";
 import { motion } from "framer-motion";
 import { Button } from "./ui/Button";
 
-// Принимаем onDiscussProject как пропс
 export const ServicesTab = ({ onDiscussProject }) => (
     <motion.div
         initial={{ opacity: 0, y: 10 }}

@@ -1,4 +1,5 @@
 "use client";
+
 import {
     Dialog,
     DialogPanel,
@@ -19,7 +20,6 @@ import {
 import { useState, useEffect, useRef } from "react";
 import { Loader2 } from "lucide-react";
 
-// --- КОМПОНЕНТ ДЛЯ ОТОБРАЖЕНИЯ ИЗОБРАЖЕНИЯ С МАСШТАБОМ ---
 const ZoomableImage = ({
     src,
     alt,
@@ -30,7 +30,6 @@ const ZoomableImage = ({
 }) => {
     return (
         <div className="relative w-full min-h-full flex items-center justify-center bg-white/5 rounded-md">
-            {/* Условно рендерим лоадер */}
             {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center">
                     <Loader2 className="h-12 w-12 text-white/50 animate-spin" />
@@ -40,9 +39,9 @@ const ZoomableImage = ({
             <img
                 src={src}
                 alt={alt}
-                onLoad={onImageLoad} // Сообщаем о загрузке
+                onLoad={onImageLoad}
                 className={`transition-opacity duration-300 ease-out origin-center ${
-                    isLoading ? "opacity-0" : "opacity-100" // Плавное появление
+                    isLoading ? "opacity-0" : "opacity-100"
                 }`}
                 style={{
                     transform: `scale(${scale})`,
@@ -54,7 +53,6 @@ const ZoomableImage = ({
     );
 };
 
-// Компонент-предупреждение
 const ScreenshotWarning = () => (
     <div className="flex items-center gap-2 p-3 text-xs text-amber-300/80 bg-amber-900/20 border border-amber-500/20 rounded-lg mb-4">
         <InformationCircleIcon className="w-5 h-5 flex-shrink-0" />
@@ -66,7 +64,6 @@ const ScreenshotWarning = () => (
     </div>
 );
 
-// Компонент для рендеринга контента внутри модалки
 const ModalContent = ({
     project,
     scale,
@@ -74,7 +71,6 @@ const ModalContent = ({
     isLoading,
     onImageLoad,
 }) => {
-    // Если у проекта есть вкладки (tabs) - рендерим их
     if (project.tabs && project.tabs.length > 0) {
         return (
             <div>
@@ -113,7 +109,6 @@ const ModalContent = ({
         );
     }
 
-    // Если вкладок нет, но есть fullImageUrl - рендерим одно изображение
     if (project.fullImageUrl) {
         return (
             <div>
@@ -130,7 +125,6 @@ const ModalContent = ({
         );
     }
 
-    // Если нет ни того, ни другого, показываем заглушку
     return (
         <p className="text-center text-white/50 p-8">
             Нет изображений для предпросмотра.
@@ -144,18 +138,17 @@ export const ProjectModal = ({ project, onClose }) => {
 
     const closeButtonRef = useRef(null);
 
-    // Cостояние для отслеживания загрузки
     const [isLoading, setIsLoading] = useState(true);
 
-    // Сбрасываем зум при открытии нового проекта
     useEffect(() => {
         if (project) {
             setScale(1);
-            setIsLoading(true); // Сбрасываем лоадер для нового проекта
+            setIsLoading(true);
+            а;
         }
     }, [project]);
 
-    const handleImageLoad = () => setIsLoading(false); // Функция для скрытия лоадера
+    const handleImageLoad = () => setIsLoading(false);
 
     const handleZoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3));
     const handleZoomOut = () => setScale((prev) => Math.max(1, prev - 0.2));
@@ -169,7 +162,7 @@ export const ProjectModal = ({ project, onClose }) => {
                 as="div"
                 className="relative z-50"
                 onClose={onClose}
-                initialFocus={closeButtonRef} // Указываем начальный фокус
+                initialFocus={closeButtonRef}
             >
                 <TransitionChild
                     enter="ease-out duration-300"
@@ -182,7 +175,6 @@ export const ProjectModal = ({ project, onClose }) => {
                     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" />
                 </TransitionChild>
 
-                {/* --- Добавляем отступы для кнопки закрытия --- */}
                 <div className="fixed inset-0 w-screen overflow-y-auto p-4 md:p-8">
                     <div className="flex min-h-full items-center justify-center">
                         <TransitionChild
@@ -196,7 +188,7 @@ export const ProjectModal = ({ project, onClose }) => {
                             leaveTo="opacity-0 scale-95"
                         >
                             <button
-                                ref={closeButtonRef} // Привязываем ref к кнопке
+                                ref={closeButtonRef}
                                 onClick={onClose}
                                 className="absolute -top-4 -right-4 z-20 p-2 rounded-full text-white/50 bg-black/50 hover:text-white hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors"
                                 aria-label="Закрыть"
@@ -206,7 +198,6 @@ export const ProjectModal = ({ project, onClose }) => {
 
                             <DialogPanel className="relative w-full max-w-4xl rounded-xl bg-slate-900/80 border border-white/10 p-4 backdrop-blur-xl overflow-hidden">
                                 <div className="max-h-[85vh] overflow-y-auto rounded-lg">
-                                    {/* Передаем состояние и функцию в ModalContent */}
                                     <ModalContent
                                         project={project}
                                         scale={scale}

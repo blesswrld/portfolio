@@ -14,10 +14,8 @@ export function Footer({ selectedIndex }) {
     const [isPrivacyModalOpen, setPrivacyModalOpen] = useState(false);
     const currentYear = new Date().getFullYear();
 
-    // Индекс вкладки "Контакты" в массиве tabsConfig равен 3
     const contactTabIndex = 3;
 
-    // Если активна вкладка контактов, не рендерим ничего
     if (selectedIndex === contactTabIndex) {
         return null;
     }
@@ -37,7 +35,6 @@ export function Footer({ selectedIndex }) {
                     </div>
                     <TooltipProvider delayDuration={100}>
                         <div className="flex items-center justify-center gap-6">
-                            {/* Тултип для Telegram */}
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <a
@@ -55,7 +52,6 @@ export function Footer({ selectedIndex }) {
                                 </TooltipContent>
                             </Tooltip>
 
-                            {/* Тултип для WhatsApp */}
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <a
@@ -73,7 +69,6 @@ export function Footer({ selectedIndex }) {
                                 </TooltipContent>
                             </Tooltip>
 
-                            {/* Тултип для GitHub */}
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <a
@@ -95,7 +90,6 @@ export function Footer({ selectedIndex }) {
                 </div>
             </footer>
 
-            {/* --- РЕНДЕР МОДАЛЬНОГО ОКНА --- */}
             <PrivacyModal
                 isOpen={isPrivacyModalOpen}
                 onClose={() => setPrivacyModalOpen(false)}

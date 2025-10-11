@@ -4,7 +4,7 @@ import { useState } from "react";
 import { projectsData } from "../data/projectsData";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
-import { SpotlightCard } from "./SpotlightCard"; // <-- ИМПОРТИРУЕМ ОБЕРТКУ
+import { SpotlightCard } from "./SpotlightCard";
 import { AnimatePresence, motion } from "framer-motion";
 import { Disclosure, DisclosureButton } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
@@ -12,20 +12,17 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 const INITIAL_COUNT = 8;
 
 export const PortfolioTab = () => {
-    const [selectedProject, setSelectedProject] = useState(null); // Добавляем состояние
+    const [selectedProject, setSelectedProject] = useState(null);
 
     const handleOpenModal = (project) => {
-        // Добавляем обработчик
         setSelectedProject(project);
     };
 
     const handleCloseModal = () => {
-        // Добавляем обработчик
         setSelectedProject(null);
     };
 
     return (
-        // Используем React Fragment, чтобы добавить модальное окно на том же уровне
         <>
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -58,7 +55,6 @@ export const PortfolioTab = () => {
                                                         : 0,
                                             }}
                                         >
-                                            {/* --- ОБАРАЧИВАЕМ КАРТОЧКУ В ОБЕРТКУ --- */}
                                             <SpotlightCard>
                                                 <ProjectCard
                                                     project={project}
@@ -105,7 +101,6 @@ export const PortfolioTab = () => {
                 )}
             </AnimatePresence>
 
-            {/* Добавляем рендер модального окна */}
             <ProjectModal
                 project={selectedProject}
                 onClose={handleCloseModal}

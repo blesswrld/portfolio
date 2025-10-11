@@ -11,20 +11,18 @@ import { techStackData } from "../data/techStackData";
 import { Button } from "./ui/Button";
 import toast from "react-hot-toast";
 
-// Карта HEX-цветов для линий
 const categoryLineColors = {
-    "Frontend (Клиентская часть):": "#0ea5e9", // sky-500
-    "Backend (Серверная часть):": "#10b981", // emerald-500
-    "Облачные Сервисы и Хранилище:": "#f59e0b", // amber-500
-    "Инструменты Сборки и Утилиты:": "#6366f1", // indigo-500
+    "Frontend (Клиентская часть):": "#0ea5e9",
+    "Backend (Серверная часть):": "#10b981",
+    "Облачные Сервисы и Хранилище:": "#f59e0b",
+    "Инструменты Сборки и Утилиты:": "#6366f1",
 };
 
-// Компонент бейджа
 const TechBadge = ({ name, bgColor, logoColor, logo }) => (
     <span
         style={{ backgroundColor: bgColor, color: logoColor }}
         className="flex items-center gap-2 px-2.5 py-1 rounded text-sm font-bold transition-transform hover:scale-105 cursor-pointer"
-        title={name} // Добавляем title для подсказки при наведении
+        title={name}
     >
         {logo && (
             <img
@@ -41,7 +39,6 @@ const TechBadge = ({ name, bgColor, logoColor, logo }) => (
 );
 
 export const ResumeTab = () => {
-    // --- ДОБАВЛЯЕМ ФУНКЦИЮ КОПИРОВАНИЯ EMAIL ---
     const handleCopyEmail = () => {
         const email = "gelgaev.dev@mail.ru";
         navigator.clipboard
@@ -70,7 +67,6 @@ export const ResumeTab = () => {
                 </p>
             </div>
 
-            {/* --- ДОБАВЛЯЕМ БЛОК С КНОПКОЙ --- */}
             <div className="flex justify-center mt-8">
                 <Button
                     variant="secondary"
@@ -83,9 +79,7 @@ export const ResumeTab = () => {
 
             <div className="mx-auto w-full mt-8 divide-y divide-white/5 rounded-xl bg-white/5">
                 <Disclosure as="div" className="p-6" defaultOpen={true}>
-                    {(
-                        { open } // <-- Используем render prop для доступа к состоянию "open"
-                    ) => (
+                    {({ open }) => (
                         <>
                             <DisclosureButton className="group flex w-full items-center justify-between">
                                 <span className="text-sm font-medium text-white group-hover:text-white/80">
@@ -93,7 +87,7 @@ export const ResumeTab = () => {
                                 </span>
                                 <ChevronDownIcon
                                     className={`w-5 h-5 fill-white/60 group-hover:fill-white/50 transition-transform duration-300 ease-in-out ${
-                                        open ? "rotate-180" : "" // <-- Управляем вращением через состояние
+                                        open ? "rotate-180" : ""
                                     }`}
                                 />
                             </DisclosureButton>
@@ -108,7 +102,6 @@ export const ResumeTab = () => {
                 </Disclosure>
             </div>
 
-            {/* --- БЛОК: СТЕК ТЕХНОЛОГИЙ --- */}
             <div className="mt-16">
                 <h2 className="text-3xl font-bold mb-12 text-center text-white">
                     Стек Технологий и Инструменты
@@ -118,13 +111,11 @@ export const ResumeTab = () => {
                         <div
                             key={group.category}
                             className="tech-group-container"
-                            // Задаем цвет линии через CSS-переменную
                             style={{
                                 "--line-color":
                                     categoryLineColors[group.category],
                             }}
                         >
-                            {/* Абсолютно спозиционированная иконка */}
                             <div className="absolute left-0 top-0">
                                 <CodeBracketIcon
                                     className="h-6 w-6"
@@ -136,7 +127,6 @@ export const ResumeTab = () => {
                                 />
                             </div>
 
-                            {/* Контент */}
                             <div>
                                 <h3 className="text-xl font-semibold text-white/80">
                                     {group.category}

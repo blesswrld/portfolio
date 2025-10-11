@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { Button } from "./ui/Button";
-import toast from "react-hot-toast"; // <-- Импортируем toast
+import toast from "react-hot-toast";
 
 export function ContactForm() {
     const {
@@ -34,17 +34,14 @@ export function ContactForm() {
             await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-                templateParams, // <-- Используем templateParams с временем
+                templateParams,
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
             );
 
-            // --- УВЕДОМЛЕНИЕ ОБ УСПЕХЕ ---
             toast.success("Сообщение успешно отправлено!");
             reset();
         } catch (error) {
-            // --- УВЕДОМЛЕНИЕ ОБ ОШИБКЕ ---
             toast.error("Что-то пошло не так. Попробуйте позже.");
-            // Логируем ошибку в консоль
             console.error("ОШИБКА EmailJS:", error);
         } finally {
             setIsSubmitting(false);

@@ -19,7 +19,7 @@ export const PrivacyModal = ({ isOpen, onClose }) => {
                 as="div"
                 className="relative z-50"
                 onClose={onClose}
-                initialFocus={closeButtonRef} // Указываем начальный фокус
+                initialFocus={closeButtonRef}
             >
                 <TransitionChild
                     enter="ease-out duration-300"
@@ -44,7 +44,7 @@ export const PrivacyModal = ({ isOpen, onClose }) => {
                         >
                             <DialogPanel className="relative w-full max-w-2xl rounded-xl bg-slate-900/80 border border-white/10 p-8 backdrop-blur-xl">
                                 <button
-                                    ref={closeButtonRef} // Привязываем ref к кнопке
+                                    ref={closeButtonRef}
                                     onClick={onClose}
                                     className="absolute top-4 right-4 z-10 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10"
                                     aria-label="Закрыть"

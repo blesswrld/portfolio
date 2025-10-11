@@ -1,13 +1,11 @@
-"use client"; // Директива "use client" нужна только для обертки
+"use client";
 
 import { useRef } from "react";
 import { Button } from "./ui/Button";
 
-// --- КОМПОНЕНТ-ОБЕРТКА С КЛИЕНТСКОЙ ЛОГИКОЙ ---
 const ProjectCardWithSpotlight = ({ project, onImageClick }) => {
     const cardRef = useRef(null);
 
-    // --- ОБРАБОТЧИК ДВИЖЕНИЯ МЫШИ ---
     const handleMouseMove = (e) => {
         if (!cardRef.current) return;
         const rect = cardRef.current.getBoundingClientRect();
@@ -30,30 +28,27 @@ const ProjectCardWithSpotlight = ({ project, onImageClick }) => {
 
 const ProjectCardUI = ({ project, onImageClick }) => (
     <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden flex flex-col group h-full backdrop-blur-lg transition-all hover:bg-white/10">
-        {/* --- БЛОК: БЕЙДЖ "В РАЗРАБОТКЕ" --- */}
         {project.inDevelopment && (
             <div className="absolute top-4 right-4 z-20 px-3 py-1 text-xs font-bold text-black bg-yellow-400 rounded-full shadow-lg">
                 В разработке
             </div>
         )}
 
-        {/* Обертка для контента, чтобы z-index работал правильно */}
         <div className="relative z-10 flex flex-col flex-grow">
             <div
-                // Делаем курсор 'not-allowed' для проектов в разработке
                 className={`overflow-hidden ${
                     project.inDevelopment
                         ? "cursor-not-allowed"
                         : "cursor-pointer"
                 }`}
-                onClick={!project.inDevelopment ? onImageClick : undefined} // Вызываем onImageClick только если не в разработке
+                onClick={!project.inDevelopment ? onImageClick : undefined}
             >
                 <img
                     src={project.imageUrl}
                     alt={project.title}
                     className={`w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105 ${
                         project.inDevelopment ? "grayscale" : ""
-                    }`} // Делаем картинку серой
+                    }`}
                 />
             </div>
             <div className="p-6 flex flex-col flex-grow">
@@ -81,7 +76,6 @@ const ProjectCardUI = ({ project, onImageClick }) => (
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full"
-                        // Предотвращаем клик, если в разработке
                         onClick={(e) =>
                             project.inDevelopment && e.preventDefault()
                         }
@@ -109,5 +103,4 @@ const ProjectCardUI = ({ project, onImageClick }) => (
     </div>
 );
 
-// --- ЭКСПОРТИРУЕМ ОБЕРТКУ КАК КОМПОНЕНТ ПО УМОЛЧАНИЮ ---
 export const ProjectCard = ProjectCardWithSpotlight;
