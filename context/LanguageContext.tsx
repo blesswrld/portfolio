@@ -37,6 +37,8 @@ const translations = {
                 p2: "Velvet Pour: Mojito",
                 p3: "Brainwave AI Platform",
                 p4: "CodeSync Platform",
+                p5: "Nexus Business",
+                p6: "Lumina Portfolio",
             },
         },
         pricing: {
@@ -151,6 +153,8 @@ const translations = {
                 p2: "Промо Velvet Pour",
                 p3: "Платформа Brainwave",
                 p4: "Платформа CodeSync",
+                p5: "Nexus Бизнес",
+                p6: "Lumina Портфолио",
             },
         },
         pricing: {

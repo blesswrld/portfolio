@@ -137,7 +137,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal className="md:col-span-2 h-full w-full" delay={0.5}>
                         <ProjectCard
-                            title="Nexus Business"
+                            title={t.projects.items.p5}
                             category={t.projects.categories.corp}
                             tech={["Next.js", "Tailwind CSS", "Framer Motion"]}
                             imageColor="bg-[url('/nexus-business.png')] bg-cover bg-center"
@@ -146,7 +146,7 @@ export default function Home() {
                     </Reveal>
                     <Reveal className="col-span-1 h-full w-full" delay={0.6}>
                         <ProjectCard
-                            title="Lumina Portfolio"
+                            title={t.projects.items.p6}
                             category={t.projects.categories.creative}
                             tech={["Next.js", "Tailwind CSS", "Framer Motion"]}
                             imageColor="bg-[url('/lumina.png')] bg-cover bg-center"
