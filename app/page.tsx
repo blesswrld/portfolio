@@ -198,7 +198,7 @@ export default function Home() {
                         </p>
                         <Magnetic>
                             <a
-                                href="https://t.me/heyjex"
+                                href="https://t.me/tamerlan_webdev"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 bg-accent/10 hover:bg-accent/20 text-accent px-6 py-3 rounded-full font-medium transition-colors text-sm"
