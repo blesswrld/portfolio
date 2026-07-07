@@ -113,6 +113,9 @@ const translations = {
                 email: "Email",
                 message: "Message",
                 btn: "Send Message",
+                privacy:
+                    "By clicking the button, you agree to the processing of personal data and the ",
+                privacyLink: "Privacy Policy",
             },
         },
     },
@@ -225,6 +228,9 @@ const translations = {
                 email: "Email",
                 message: "Сообщение",
                 btn: "Отправить сообщение",
+                privacy:
+                    "Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с ",
+                privacyLink: "Политикой конфиденциальности",
             },
         },
     },

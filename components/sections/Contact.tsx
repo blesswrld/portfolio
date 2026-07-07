@@ -312,6 +312,17 @@ export const Contact = () => {
                             </button>
                         </Magnetic>
                     </div>
+                    <p className="text-[10px] text-muted/60 mt-2 max-w-sm">
+                        {t.contact.form.privacy}
+                        <a
+                            href="/privacy"
+                            target="_blank"
+                            className="underline decoration-muted/40 hover:decoration-foreground hover:text-foreground transition-colors"
+                        >
+                            {t.contact.form.privacyLink}
+                        </a>
+                        .
+                    </p>
                 </form>
             </div>
         </section>
