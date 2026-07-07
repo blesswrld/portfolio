@@ -24,6 +24,40 @@ export const Contact = () => {
         { name: "Telegram", href: "https://t.me/tamerlan_webdev" },
     ];
 
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+        const { name, value } = e.target;
+        const val = value.trim();
+
+        setErrors((prev) => {
+            const newErrors = { ...prev };
+
+            if (name === "user_name" && prev.name && val.length >= 2) {
+                delete newErrors.name;
+            }
+            if (
+                name === "user_email" &&
+                prev.email &&
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+            ) {
+                delete newErrors.email;
+            }
+            if (
+                name === "user_phone" &&
+                prev.phone &&
+                (!val || /^[\d\+\-\(\)\s]{7,20}$/.test(val))
+            ) {
+                delete newErrors.phone;
+            }
+            if (name === "message" && prev.message && val.length >= 10) {
+                delete newErrors.message;
+            }
+
+            return newErrors;
+        });
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!formRef.current) return;
@@ -162,6 +196,7 @@ export const Contact = () => {
                         <input
                             type="text"
                             name="user_name"
+                            onChange={handleInputChange}
                             disabled={isSubmitting}
                             className={`bg-transparent border-b py-3 outline-none transition-colors text-foreground w-full disabled:opacity-50 ${errors.name ? "border-red-500/50 focus:border-red-500" : "border-neutral-800 focus:border-foreground"}`}
                         />
@@ -181,6 +216,7 @@ export const Contact = () => {
                         <input
                             type="tel"
                             name="user_phone"
+                            onChange={handleInputChange}
                             disabled={isSubmitting}
                             className={`bg-transparent border-b py-3 outline-none transition-colors text-foreground w-full disabled:opacity-50 ${errors.phone ? "border-red-500/50 focus:border-red-500" : "border-neutral-800 focus:border-foreground"}`}
                         />
@@ -199,6 +235,7 @@ export const Contact = () => {
                         <input
                             type="email"
                             name="user_email"
+                            onChange={handleInputChange}
                             disabled={isSubmitting}
                             className={`bg-transparent border-b py-3 outline-none transition-colors text-foreground w-full disabled:opacity-50 ${errors.email ? "border-red-500/50 focus:border-red-500" : "border-neutral-800 focus:border-foreground"}`}
                         />
@@ -217,6 +254,7 @@ export const Contact = () => {
                         <textarea
                             rows={4}
                             name="message"
+                            onChange={handleInputChange}
                             disabled={isSubmitting}
                             className={`bg-transparent border-b py-3 outline-none transition-colors text-foreground w-full resize-none disabled:opacity-50 ${errors.message ? "border-red-500/50 focus:border-red-500" : "border-neutral-800 focus:border-foreground"}`}
                         />
