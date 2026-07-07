@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { ArrowUpRight, Loader2, CheckCircle2 } from "lucide-react";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { useLanguage } from "@/context/LanguageContext";
-import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
     const { t, lang } = useLanguage();
@@ -82,18 +81,35 @@ export const Contact = () => {
         setIsSubmitting(true);
         setStatus("idle");
 
-        try {
-            await emailjs.sendForm(
-                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
-                formRef.current,
-                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "",
-            );
+        const formData = new FormData();
+        formData.append(
+            "access_key",
+            process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+        );
+        formData.append("name", name);
+        formData.append("email", email);
+        if (phone) formData.append("phone", phone);
+        formData.append("message", message);
+        formData.append("from_name", "Portfolio Notification");
+        formData.append("subject", `Новая заявка от ${name}`);
 
-            setStatus("success");
-            formRef.current.reset();
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus("success");
+                form.reset();
+            } else {
+                console.error("Web3Forms Error:", data);
+                setStatus("error");
+            }
         } catch (error) {
-            console.error("EmailJS Error:", error);
+            console.error("Fetch Error:", error);
             setStatus("error");
         } finally {
             setIsSubmitting(false);
