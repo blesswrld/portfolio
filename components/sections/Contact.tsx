@@ -22,7 +22,7 @@ export const Contact = () => {
     const socials = [
         { name: "GitHub", href: "https://github.com/blesswrld" },
         { name: "Kwork", href: "https://kwork.ru/user/tameerlan" },
-        { name: "Telegram", href: "https://t.me/heyjex" },
+        { name: "Telegram", href: "https://t.me/tamerlan_webdev" },
     ];
 
     const handleSubmit = async (e: React.FormEvent) => {
