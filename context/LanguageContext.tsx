@@ -1,11 +1,15 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Language = "en" | "ru";
 
 const translations = {
     en: {
+        seo: {
+            title: "Tamerlan | Frontend Developer & UI Designer",
+            desc: "Professional development of Landing Pages, E-commerce, and Web Applications. 100% result, modern React/Next.js technologies.",
+        },
         nav: {
             projects: "Projects",
             pricing: "Services",
@@ -113,6 +117,10 @@ const translations = {
         },
     },
     ru: {
+        seo: {
+            title: "Тамерлан | Frontend-разработчик и UI-дизайнер",
+            desc: "Профессиональная разработка Landing Page, интернет-магазинов и веб-приложений. 100% результат, современные технологии React/Next.js.",
+        },
         nav: {
             projects: "Проекты",
             pricing: "Услуги",
@@ -239,10 +247,24 @@ export const LanguageProvider = ({
 }) => {
     const [lang, setLang] = useState<Language>("ru");
 
+    const t = translations[lang];
+
+    useEffect(() => {
+        document.documentElement.lang = lang;
+
+        if (t.seo) {
+            document.title = t.seo.title;
+            const metaDescription = document.querySelector(
+                'meta[name="description"]',
+            );
+            if (metaDescription) {
+                metaDescription.setAttribute("content", t.seo.desc);
+            }
+        }
+    }, [lang, t]);
+
     return (
-        <LanguageContext.Provider
-            value={{ lang, setLang, t: translations[lang] }}
-        >
+        <LanguageContext.Provider value={{ lang, setLang, t }}>
             {children}
         </LanguageContext.Provider>
     );
