@@ -135,6 +135,24 @@ export default function Home() {
                             link="https://codesync-platform-demo.vercel.app"
                         />
                     </Reveal>
+                    <Reveal className="md:col-span-2 h-full w-full" delay={0.5}>
+                        <ProjectCard
+                            title="Nexus Business"
+                            category={t.projects.categories.corp}
+                            tech={["Next.js", "Tailwind CSS", "Framer Motion"]}
+                            imageColor="bg-[url('/nexus-business.png')] bg-cover bg-center"
+                            link="https://nexus-business-lac.vercel.app"
+                        />
+                    </Reveal>
+                    <Reveal className="col-span-1 h-full w-full" delay={0.6}>
+                        <ProjectCard
+                            title="Lumina Portfolio"
+                            category={t.projects.categories.creative}
+                            tech={["Next.js", "Tailwind CSS", "Framer Motion"]}
+                            imageColor="bg-[url('/lumina.png')] bg-cover bg-center"
+                            link="https://lumina-photo.vercel.app"
+                        />
+                    </Reveal>
                 </div>
             </section>
 
